@@ -2,4 +2,5 @@
 
 export(clean_cols_in)
 export(clean_cols_out)
+export(load_required)
 export(which_rows)

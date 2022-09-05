@@ -5,23 +5,80 @@
 \title{Return matching row indices}
 \usage{
 which_rows(
-  df,
+  data,
+  scan_cols = 1:ncol(data),
   contain_strings = NULL,
-  scan_cols = 1:ncol(df),
   all_strings = TRUE,
   case_sensitive = TRUE,
   lack_na = TRUE,
   flatten = TRUE
 )
 }
+\arguments{
+\item{data}{Input data frame or tibble.}
+
+\item{scan_cols}{The column indices that will have their row values combined and searched for matches
+(\emph{see Details section}).}
+
+\item{contain_strings}{A single string or character list.}
+
+\item{all_strings}{If \code{TRUE}, return index where all strings present. If \code{FALSE},
+return the index of any row with at least one matching string.}
+
+\item{case_sensitive}{If \code{FALSE}, pattern case is ignored. If \code{TRUE}, pattern case is considered.}
+
+\item{lack_na}{If \code{TRUE}, do not return row indices which have \code{NA} values in any of the \code{scan_cols}.
+If \code{FALSE}, permit the return of indices with \code{NA} values.}
+
+\item{flatten}{If \code{TRUE}, return an integer vector of each unique index. If \code{FALSE},
+return a named list of indices.}
+}
 \value{
-An integer vector or list of integer vectors
+An integer vectors or list of integer vectors.
 }
 \description{
-Replaces underscores with spaces and periods with slashes;
-optionally changes string case.
+For cleaning data with inconsistent formatting, but consistent identifying
+characters somewhere within each row. For use in situations like:
+\itemize{
+\item to detect the header row of an Excel sheet when it is always the first row without NA values
+\item to select rows by index when it is known that a valid row contains an identifying character or
+string, but the column to search isn't consistent
+\item to normalize flattened data when more than one character or string must be used to
+categorize a row value as a certain column attribute
+}
+}
+\details{
+Combines the row values of any number of
+columns into a single string separated by a space (" ") and returns the indices
+which pass the conditions of the arguments.
 }
 \examples{
-column_names <- c("amount", "payment_date_mm.dd.yyyy")
-which_rows(column_names, "upper")
+set.seed(1)
+sample_data <- CO2[sample(nrow(CO2), 50), ]
+sample_data
+
+row_index <-
+  which_rows(
+    sample_data,
+    contain_strings = c("Qc", "QUEBEC", "1000"),
+    all_strings = TRUE,
+    case_sensitive = FALSE,
+    flatten = TRUE # to directly subset
+  )
+
+# where each string occurs in string of row vals
+sample_data[row_index, ]
+
+row_indices <-
+  which_rows(
+    sample_data,
+    contain_strings = c("Mc1", "nonchilled 500"),
+    all_strings = FALSE,
+    flatten = FALSE # to view index list
+  )
+
+# where "Missis" occurs in string of row vals
+sample_data[row_indices[[1]], ]
+# where "nonchilled 500" occurs in string of row vals
+sample_data[row_indices[[2]], ]
 }

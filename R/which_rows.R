@@ -1,55 +1,102 @@
 #' Return matching row indices
 #'
-#' Replaces underscores with spaces and periods with slashes;
-#' optionally changes string case.
+#' For cleaning data with inconsistent formatting, but consistent identifying
+#' characters somewhere within each row. For use in situations like:
+#' * to detect the header row of an Excel sheet when it is always the first row without NA values
+#' * to select rows by index when it is known that a valid row contains an identifying character or
+#' string, but the column to search isn't consistent
+#' * to normalize flattened data when more than one character or string must be used to
+#' categorize a row value as a certain column attribute
 #'
-#' @return An integer vector or list of integer vectors
+#' @param data Input data frame or tibble.
+#' @param scan_cols The column indices that will have their row values combined and searched for matches
+#' (\emph{see Details section}).
+#' @param contain_strings A single string or character list.
+#' @param all_strings If `TRUE`, return index where all strings present. If `FALSE`,
+#'                    return the index of any row with at least one matching string.
+#' @param case_sensitive If `FALSE`, pattern case is ignored. If `TRUE`, pattern case is considered.
+#' @param lack_na If `TRUE`, do not return row indices which have `NA` values in any of the \code{scan_cols}.
+#'                If `FALSE`, permit the return of indices with `NA` values.
+#' @param flatten If `TRUE`, return an integer vector of each unique index. If `FALSE`,
+#' return a named list of indices.
+#' @details
+#' Combines the row values of any number of
+#' columns into a single string separated by a space (" ") and returns the indices
+#' which pass the conditions of the arguments.
+#'
+#' @return An integer vectors or list of integer vectors.
 #' @export
 #' @examples
-#' column_names <- c("amount", "payment_date_mm.dd.yyyy")
-#' which_rows(column_names, "upper")
+#' set.seed(1)
+#' sample_data <- CO2[sample(nrow(CO2), 50), ]
+#' sample_data
+#'
+#' row_index <-
+#'   which_rows(
+#'     sample_data,
+#'     contain_strings = c("Qc", "QUEBEC", "1000"),
+#'     all_strings = TRUE,
+#'     case_sensitive = FALSE,
+#'     flatten = TRUE # to directly subset
+#'   )
+#'
+#' # where each string occurs in string of row vals
+#' sample_data[row_index, ]
+#'
+#' row_indices <-
+#'   which_rows(
+#'     sample_data,
+#'     contain_strings = c("Mc1", "nonchilled 500"),
+#'     all_strings = FALSE,
+#'     flatten = FALSE # to view index list
+#'   )
+#'
+#' # where "Missis" occurs in string of row vals
+#' sample_data[row_indices[[1]], ]
+#' # where "nonchilled 500" occurs in string of row vals
+#' sample_data[row_indices[[2]], ]
 which_rows <-
-  function(df,
+  function(data,
+           scan_cols = 1:ncol(data),
            contain_strings = NULL,
-           scan_cols = 1:ncol(df),
            all_strings = TRUE,
            case_sensitive = TRUE,
            lack_na = TRUE,
            flatten = TRUE) {
-    scan_df <- df[, scan_cols]
+    scan_df <- data[, scan_cols]
     string_rows <-
       scan_df %>%
-      unite("string_rows", names(scan_df), sep = " ", na.rm = T) %>%
+      tidyr::unite("string_rows", names(scan_df), sep = " ", na.rm = T) %>%
       unlist()
     if (case_sensitive == FALSE & is.null(contain_strings) == FALSE) {
       contain_strings <- tolower(contain_strings)
       string_rows <- tolower(string_rows)
     }
     if (is.null(contain_strings) == FALSE) {
-      contains_index <- map(.x = contain_strings, ~ str_which(string_rows, .x))
+      contains_index <- map(.x = contain_strings, ~ stringr::str_which(string_rows, .x))
       names(contains_index) <- paste0("contains string: '", contain_strings, "'")
     } else {
       contains_index <- list(1:nrow(scan_df))
     }
     if (lack_na == T) {
       not_na <- which(rowSums(is.na(scan_df)) == 0)
-      keep_indices <- map(.x = contains_index, ~ .x %in% not_na)
-      contains_index <- map2(.x = contains_index, .y = keep_indices, ~ .x[.y])
+      keep_indices <- purrr::map(.x = contains_index, ~ .x %in% not_na)
+      contains_index <- purrr::map2(.x = contains_index, .y = keep_indices, ~ .x[.y])
     }
     if (length(contain_strings) == 1 | missing(contain_strings) == T) {
-      if (flatten == TRUE) contains_index <- flatten_int(contains_index)
+      if (flatten == TRUE) contains_index <- purrr::flatten_int(contains_index)
       return(contains_index)
     }
     if (all_strings == T) {
-      flatten_index <- flatten_int(contains_index)
+      flatten_index <- purrr::flatten_int(contains_index)
       all_strings_occur <-
-        tibble(index = flatten_index) %>%
-        group_by(index) %>%
-        summarise(occurs = n()) %>%
-        filter(occurs == length(contain_strings))
+        dplyr::tibble(index = flatten_index) %>%
+        dplyr::group_by(index) %>%
+        dplyr::summarise(occurs = n()) %>%
+        dplyr::filter(occurs == length(contain_strings))
       contains_index <- list(all_strings_occur$index)
       names(contains_index) <- paste0("contains all strings: c('", paste0(contain_strings, collapse = "', '"), "')")
     }
-    if (flatten == TRUE) contains_index <- sort(unique(flatten_int(contains_index)))
+    if (flatten == TRUE) contains_index <- sort(unique(purrr::flatten_int(contains_index)))
     return(contains_index)
   }

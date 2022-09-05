@@ -4,7 +4,7 @@
 #' optionally changes string case.
 #'
 #' @return A vector of characters.
-#' @seealso [clean_cols_in()] to partially reverse the changes
+#' @seealso [clean_cols_in()]
 #' @export
 #' @examples
 #' column_names <- c("AMOUNT", "PAYMENT_DATE_MM.DD.YYYY")

@@ -18,5 +18,5 @@ column_names <- c("AMOUNT", "PAYMENT_DATE_MM.DD.YYYY")
 clean_cols_out(column_names, "proper")
 }
 \seealso{
-[clean_cols_in()] to partially reverse the changes
+\code{\link[=clean_cols_in]{clean_cols_in()}}
 }

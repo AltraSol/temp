@@ -5,7 +5,7 @@
 #' optionally changes string case.
 #'
 #' @return A vector of characters.
-#' @seealso [clean_cols_out()] to partially reverse the changes
+#' @seealso [clean_cols_out()]
 #' @export
 #' @examples
 #' column_names <- c("Amount$", "Payment Date\r\n(mm/dd/yyyy)")

@@ -1,3 +1,14 @@
+#' Improve the look of column names prior to export
+#'
+#' Replaces underscores with spaces and periods with slashes;
+#' optionally changes string case.
+#'
+#' @return A vector of characters.
+#' @seealso [clean_cols_in()] to partially reverse the changes
+#' @export
+#' @examples
+#' column_names <- c("AMOUNT", "PAYMENT_DATE_MM.DD.YYYY")
+#' clean_cols_out(column_names, "proper")
 clean_cols_out <- function(column_names, case = c("upper", "lower", "proper")) {
   column_names <- gsub("_", " ", column_names)
   column_names <- gsub("[.]", "/\\", column_names)

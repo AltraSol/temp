@@ -7,8 +7,8 @@
 #' @seealso [clean_cols_in()]
 #' @export
 #' @examples
-#' column_names <- c("AMOUNT", "PAYMENT_DATE_MM.DD.YYYY")
-#' clean_cols_out(column_names, "proper")
+#' column_names <- c("amount", "payment_date_mm.dd.yyyy")
+#' clean_cols_out(column_names, "upper")
 clean_cols_out <- function(column_names, case = c("upper", "lower", "proper")) {
   column_names <- gsub("_", " ", column_names)
   column_names <- gsub("[.]", "/\\", column_names)

@@ -14,8 +14,8 @@ Replaces underscores with spaces and periods with slashes;
 optionally changes string case.
 }
 \examples{
-column_names <- c("AMOUNT", "PAYMENT_DATE_MM.DD.YYYY")
-clean_cols_out(column_names, "proper")
+column_names <- c("amount", "payment_date_mm.dd.yyyy")
+clean_cols_out(column_names, "upper")
 }
 \seealso{
 \code{\link[=clean_cols_in]{clean_cols_in()}}

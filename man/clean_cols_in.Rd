@@ -16,7 +16,7 @@ optionally changes string case.
 }
 \examples{
 column_names <- c("Amount$", "Payment Date\r\n(mm/dd/yyyy)")
-clean_cols_in(column_names, "upper")
+clean_cols_in(column_names, "lower")
 }
 \seealso{
 \code{\link[=clean_cols_out]{clean_cols_out()}}

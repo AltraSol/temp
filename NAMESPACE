@@ -2,3 +2,4 @@
 
 export(clean_cols_in)
 export(clean_cols_out)
+export(which_rows)

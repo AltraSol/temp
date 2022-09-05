@@ -10,8 +10,9 @@
 #' @examples
 #' column_names <- c("Amount$", "Payment Date\r\n(mm/dd/yyyy)")
 #' clean_cols_in(column_names, "lower")
-clean_cols_in <- function(column_names,
-                          case = c("upper", "lower", "proper")) {
+clean_cols_in <-
+  function(column_names,
+           case = c("upper", "lower", "proper")) {
   column_names <- gsub("[\r\n()*!#$%@&]", " ", column_names)
   column_names <- gsub("[//\\]", ".", column_names)
   if (missing(case)) {

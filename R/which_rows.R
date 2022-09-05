@@ -1,3 +1,13 @@
+#' Return matching row indices
+#'
+#' Replaces underscores with spaces and periods with slashes;
+#' optionally changes string case.
+#'
+#' @return An integer vector or list of integer vectors
+#' @export
+#' @examples
+#' column_names <- c("amount", "payment_date_mm.dd.yyyy")
+#' which_rows(column_names, "upper")
 which_rows <-
   function(df,
            contain_strings = NULL,

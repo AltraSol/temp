@@ -6,7 +6,7 @@
 #'
 #' @param column_names A character vector of column names.
 #' @param case An optional argument to change the case of the
-#' strings provided to \code{"upper", "lower",} or \code{"proper"}.
+#' strings provided to \code{"upper", "lower",} or \code{"title"}.
 #'
 #' @return A vector of characters.
 #' @importFrom stringr str_squish
@@ -18,7 +18,7 @@
 #' clean_cols_in(column_names, "lower")
 clean_cols_in <-
   function(column_names,
-           case = c("upper", "lower", "proper")) {
+           case = c("upper", "lower", "title")) {
   column_names <- gsub("[\r\n()*!#$%@&]", " ", column_names)
   column_names <- gsub("[//\\]", ".", column_names)
   if (missing(case)) {
@@ -26,7 +26,7 @@ clean_cols_in <-
     column_names <- toupper(column_names)
   } else if (tolower(case) == "lower") {
     column_names <- tolower(column_names)
-  } else if (tolower(case) == "proper") {
+  } else if (tolower(case) == "title") {
     column_names <- gsub("(?<=\\b)([a-z])", "\\U\\1", tolower(column_names), perl = TRUE)
   }
   column_names <- stringr::str_squish(column_names)

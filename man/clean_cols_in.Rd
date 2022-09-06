@@ -4,13 +4,13 @@
 \alias{clean_cols_in}
 \title{Make column names easier to work with}
 \usage{
-clean_cols_in(column_names, case = c("upper", "lower", "proper"))
+clean_cols_in(column_names, case = c("upper", "lower", "title"))
 }
 \arguments{
 \item{column_names}{A character vector of column names.}
 
 \item{case}{An optional argument to change the case of the
-strings provided to \code{"upper", "lower",} or \code{"proper"}.}
+strings provided to \code{"upper", "lower",} or \code{"title"}.}
 }
 \value{
 A vector of characters.

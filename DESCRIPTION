@@ -7,8 +7,8 @@ Authors@R:
              family = "Ulch",
              role = c("aut", "cre"),
              email = "culch@ualberta.ca"))
-Description: Implement techniques to structure data and improve readability of 
-  data pipelines when the source is expected to vary or have no structure at all.
+Description: Methods to reliably structure data when the source is expected to vary in format
+  or have no structure at all.
 License: MIT + file LICENSE
 Imports: 
   dplyr,

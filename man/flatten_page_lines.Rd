@@ -10,9 +10,15 @@ flatten_page_lines(page_list, rm_empty_str = TRUE)
 A one column tibble.
 }
 \description{
+<<<<<<< HEAD
 Converts a list of characters to a tibble where each row represents
 a line of text. Primarily for use with \code{\link[pdftools:pdftools]{pdftools::pdf_text()}} or
 \code{\link[pdftools:pdf_ocr]{pdftools::pdf_ocr_text()}} when return character "\\n" separates data
+=======
+Converts a list of characters to a tibble where each row value corresponds
+to a line of text. Primarily for use with \code{\link[pdftools:pdftools]{pdftools::pdf_text()}} and
+\code{\link[pdftools:pdf_ocr]{pdftools::pdf_ocr_text()}} when return characters (\n) separate data
+>>>>>>> b65ff44b843392385611d15e8b651015de04afc0
 in a meaningful way.
 }
 \examples{

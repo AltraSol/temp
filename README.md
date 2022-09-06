@@ -31,8 +31,10 @@ After installation from GitHub, you can load it with:
 library(vary)
 ```
 
-``` r
-?vary::which_rows
-```
+## Documentation
 
-    ## starting httpd help server ... done
+``` r
+?vary::which_rows()
+?vary::clean_cols_in()
+?vary::clean_cols_out()
+```

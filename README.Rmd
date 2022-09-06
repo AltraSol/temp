@@ -34,6 +34,10 @@ After installation from GitHub, you can load it with:
 library(vary)
 ```
 
-```{r, echo=TRUE}
-?vary::which_rows
+## Documentation
+
+```{r, eval=FALSE}
+?vary::which_rows()
+?vary::clean_cols_in()
+?vary::clean_cols_out()
 ```

@@ -1,6 +1,6 @@
 Package: vary
 Type: Package
-Title: Work With Data That Varies
+Title: Manage Unstructured Data
 Version: 0.1.0
 Author: Chris Ulch
 Description: Implement techniques to structure data and improve readability of 

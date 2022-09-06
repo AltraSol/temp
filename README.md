@@ -8,7 +8,7 @@ processing unstructured data from varying sources.
 
 ## Overview
 
-A collection of methods intended to improve the resiliency of a data
+A collection of methods intended to improve the resilience of a data
 pipeline by relying on pattern detection to define table dimensions,
 filter rows, or separate attributes of flattened data. For situations
 where connection points return data that has varying naming conventions,
@@ -20,7 +20,7 @@ typical data manipulation methods.
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("AltraSol/vary")
+devtools::install_github("ulchc/vary")
 ```
 
 ## Usage
@@ -35,14 +35,14 @@ library(vary)
 
 ``` r
 ?vary::which_rows()
+?vary::files_matching()
+?vary::flatten_page_list()
+# ?vary::get_downloads_folder()
+# ?vary::proper_case()
 ?vary::clean_cols_in()
 ?vary::clean_cols_out()
 ?vary::drop_na_rows()
 ?vary::drop_na_cols()
-# ?vary::files_matching()
-# ?vary::flatten_page_list()
-# ?vary::get_downloads_folder()
 # ?vary::load_required()
-# ?vary::proper_case()
 # ?vary::`%notin%`
 ```

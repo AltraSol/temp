@@ -32,8 +32,9 @@ jobs:
           r-version: ${{ matrix.r-version }}
       - name: Install dependencies
         run: |
-          install.packages(c("remotes", "rcmdcheck", "tidyr", "purrr", "stringr", "dplyr", "magrittr"))
+          install.packages(c("remotes", "rcmdcheck", "tidyr", "purrr", "stringr", "dplyr", "magrittr")
           remotes::install_deps(dependencies = TRUE)
+          library(magrittr)
         shell: Rscript {0}
       - name: Check
         run: rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "error")

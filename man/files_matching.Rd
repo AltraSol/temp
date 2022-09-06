@@ -23,17 +23,24 @@ Search a directory for a given file type and name, return
 a tibble of matching file information sorted by modified date.
 }
 \examples{
-search_directory <- getwd() # change prior to running example
-
-# search for pdf files
-files_matching(search_directory, ".pdf")
+# locate local OS downloads folder
+downloads_dir <- vary::get_downloads_folder()
+# write "Iris Report.xlsx" to downloads folder for example
+openxlsx::write.xlsx(
+  data.frame(iris),
+  paste0(downloads_dir, "Iris Report.xlsx")
+)
 
 # search for Excel files with "report" included in the title
-files_matching(search_directory, ".xlsx", name_contains = "report")
+files_matching(downloads_dir, "xlsx", name_contains = "report")
 
-df_matches <- files_matching(search_directory, ".R")
-df_matches
+# search the R manual folder for pdf manuals (html also available)
+r_manual_dir <- paste0(R.home("doc"), .Platform$file.sep, "manual")
 
-latest_match <- df_matches$path[1]
+pdf_manuals <- files_matching(r_manual_dir, "pdf")
+pdf_manuals
+
+# last modified (in this case, by the R installer)
+latest_match <- pdf_manuals$path[1]
 latest_match
 }

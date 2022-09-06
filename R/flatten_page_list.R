@@ -5,6 +5,8 @@
 #' [pdftools::pdf_ocr_text()] when return character "\\n" separates data
 #' in a meaningful way.
 #'
+#' @param page_list A list of characters
+#' @param rm_empty_str If `TRUE`, removes blank lines which translate to row values of ""
 #' @return A one column tibble.
 #' @import dplyr
 #' @importFrom stringr str_split

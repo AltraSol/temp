@@ -3,6 +3,10 @@
 #' Search a directory for a given file type and name, return
 #' a tibble of matching file information sorted by modified date.
 #'
+#' @param path The path to the directory to locate files.
+#' @param file_type A character vector indicating a file extension.
+#' @param name_contains An optional character vector to filter for matching file names.
+#' @param ignore.case If `TRUE`, `name_contains` case is ignored when filtering matching file names.
 #' @return A three column tibble.
 #' @import dplyr
 #' @export

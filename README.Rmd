@@ -5,17 +5,13 @@ output: github_document
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r setup, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
 ```
 
-## Overview
-
-To improve readability and ease the implementation of techniques for processing 
+# vary
+Improve readability and ease the implementation of techniques for processing 
 unstructured data from varying sources. 
 
+## Overview
 A collection of methods intended to improve the resiliency of a data pipeline by 
 relying on pattern detection to define table dimensions, filter rows, or separate 
 attributes of flattened data. For situations where connection points return data 
@@ -36,4 +32,8 @@ After installation from GitHub, you can load it with:
 
 ```{r}
 library(vary)
+```
+
+```{r, echo=TRUE}
+?vary::which_rows
 ```

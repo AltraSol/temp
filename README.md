@@ -1,10 +1,12 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-## Overview
+# vary
 
-To improve readability and ease the implementation of techniques for
+Improve readability and ease the implementation of techniques for
 processing unstructured data from varying sources.
+
+## Overview
 
 A collection of methods intended to improve the resiliency of a data
 pipeline by relying on pattern detection to define table dimensions,
@@ -28,3 +30,9 @@ After installation from GitHub, you can load it with:
 ``` r
 library(vary)
 ```
+
+``` r
+?vary::which_rows
+```
+
+    ## starting httpd help server ... done

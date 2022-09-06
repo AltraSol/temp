@@ -2,6 +2,7 @@
 #'
 #' Returns a data frame without columns containing only NA values.
 #'
+#' @param df A data frame or tibble.
 #' @return A data frame or tibble.
 #' @export
 #' @seealso [drop_na_rows()]

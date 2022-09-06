@@ -2,5 +2,7 @@
 
 export(clean_cols_in)
 export(clean_cols_out)
+export(drop_na_cols)
+export(drop_na_rows)
 export(load_required)
 export(which_rows)

@@ -6,6 +6,12 @@
 \usage{
 clean_cols_out(column_names, case = c("upper", "lower", "proper"))
 }
+\arguments{
+\item{column_names}{A character vector of column names.}
+
+\item{case}{An optional argument to change the case of the
+strings provided to \code{"upper", "lower",} or \code{"proper"}.}
+}
 \value{
 A vector of characters.
 }
@@ -15,6 +21,7 @@ optionally changes string case.
 }
 \examples{
 column_names <- c("amount", "payment_date_mm.dd.yyyy")
+column_names
 clean_cols_out(column_names, "upper")
 }
 \seealso{

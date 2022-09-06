@@ -6,6 +6,11 @@
 \usage{
 flatten_page_lines(page_list, rm_empty_str = TRUE)
 }
+\arguments{
+\item{page_list}{A list of characters}
+
+\item{rm_empty_str}{If \code{TRUE}, removes blank lines which translate to row values of ""}
+}
 \value{
 A one column tibble.
 }

@@ -6,6 +6,9 @@
 \usage{
 drop_na_cols(df)
 }
+\arguments{
+\item{df}{A data frame or tibble.}
+}
 \value{
 A data frame or tibble.
 }

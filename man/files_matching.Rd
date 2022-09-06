@@ -6,6 +6,15 @@
 \usage{
 files_matching(path, file_type, name_contains = NULL, ignore.case = TRUE)
 }
+\arguments{
+\item{path}{The path to the directory to locate files.}
+
+\item{file_type}{A character vector indicating a file extension.}
+
+\item{name_contains}{An optional character vector to filter for matching file names.}
+
+\item{ignore.case}{If \code{TRUE}, \code{name_contains} case is ignored when filtering matching file names.}
+}
 \value{
 A three column tibble.
 }

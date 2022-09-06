@@ -3,11 +3,16 @@
 #' Replaces underscores with spaces and periods with slashes;
 #' optionally changes string case.
 #'
+#' @param column_names A character vector of column names.
+#' @param case An optional argument to change the case of the
+#' strings provided to \code{"upper", "lower",} or \code{"proper"}.
+#'
 #' @return A vector of characters.
 #' @seealso [clean_cols_in()]
 #' @export
 #' @examples
 #' column_names <- c("amount", "payment_date_mm.dd.yyyy")
+#' column_names
 #' clean_cols_out(column_names, "upper")
 clean_cols_out <-
   function(column_names,

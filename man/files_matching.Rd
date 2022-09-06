@@ -31,7 +31,7 @@ openxlsx::write.xlsx(
   paste0(downloads_dir, "Iris Report.xlsx")
 )
 
-# search for Excel files with "report" included in the title
+# search downloads for Excel files with "report" included in the title
 files_matching(downloads_dir, "xlsx", name_contains = "report")
 
 # search the R manual folder for pdf manuals (html also available)

@@ -12,8 +12,8 @@
 #' @importFrom purrr map
 #' @export
 #' @examples
-#' ex_page1 <- paste0(stringr::fruit[1:5], collapse = \verb{"\n"})
-#' ex_page2 <- paste0(stringr::fruit[6:10], collapse = \verb{"\n"})
+#' ex_page1 <- paste0(stringr::fruit[1:5], collapse = "\n")
+#' ex_page2 <- paste0(stringr::fruit[6:10], collapse = "\n")
 #' ex_page_list <- list(ex_page1, ex_page2)
 #' ex_page_list
 #'

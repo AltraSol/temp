@@ -15,3 +15,4 @@ get_downloads_folder <- function() {
   folder <- paste0(folder, .Platform$file.sep)
   return(folder)
 }
+

@@ -9,4 +9,3 @@
 #' @examples
 #' 1:10 %notin% c(1,3,5,9)
 `%notin%` <- Negate(`%in%`)
-

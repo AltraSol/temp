@@ -4,7 +4,12 @@
 \alias{\%notin\%}
 \title{Negate value matching}
 \usage{
-... \%notin\% NA
+x \%notin\% y
+}
+\arguments{
+\item{x}{Vector or NULL: the values to be matched.}
+
+\item{y}{Vector or NULL: the values to be matched against.}
 }
 \value{
 A vector of the same length as x.

@@ -25,6 +25,9 @@
 #' which pass the conditions of the arguments.
 #'
 #' @return An integer vectors or list of integer vectors.
+#' @import purrr
+#' @import dplyr
+#' @importFrom tidyr unite
 #' @export
 #' @examples
 #' set.seed(1)

@@ -5,6 +5,7 @@
 #' optionally changes string case.
 #'
 #' @return A vector of characters.
+#' @importFrom stringr str_squish
 #' @seealso [clean_cols_out()]
 #' @export
 #' @examples

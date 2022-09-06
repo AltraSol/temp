@@ -3,6 +3,11 @@
 
 # vary
 
+<!-- badges: start -->
+
+[![R-CMD-check](https://github.com/ulchc/vary/blob/main/.github/workflows/check-release.yaml/badge.svg)](https://github.com/ulchc/vary/blob/main/.github/workflows/check-release.yaml)
+<!-- badges: end -->
+
 Improve readability and ease the implementation of techniques for
 processing unstructured data from varying sources.
 

@@ -3,6 +3,7 @@ Type: Package
 Title: Manage Unstructured Data
 Version: 0.1.0
 Author: Chris Ulch
+Maintainer: Chris Ulch <culch@ualberta.ca>
 Description: Implement techniques to structure data and improve readability of 
   data pipelines when the source is expected to vary or have no structure at all.
 License: What license is it under?

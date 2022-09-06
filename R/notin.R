@@ -9,4 +9,4 @@
 #' @seealso [base::match()] [base::Negate()]
 #' @examples
 #' 1:10 %notin% c(1,3,5,9)
-`%notin%` <- function(x, y) Negate(match(x, y, nomatch = 0L) > 0L)
+`%notin%` <- function(x, y) base::Negate(base::match(x, y, nomatch = 0) > 0)

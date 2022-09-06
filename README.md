@@ -1,25 +1,28 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# vary
+# vary <a href='https://github.com/ulchc/vary'><img src='man/figures/logo.png' align="right" height="139" /></a>
 
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/ulchc/vary/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ulchc/vary/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-Improve readability and ease the implementation of techniques for
-processing unstructured data from varying sources.
-
 ## Overview
 
-A collection of methods intended to improve the resilience of a data
-pipeline by relying on pattern detection to define table dimensions,
-filter rows, or separate attributes of flattened data. For situations
-where connection points return data that has varying naming conventions,
-table sizes, file types, or is completely unstructured, and additional
-processing is required to ensure field consistency prior to the use of
-typical data manipulation methods.
+Methods to reliably structure data when the source format or load point
+is expected to vary over time; or when inputs lack structure completely
+and are not immediately compatible with typical data manipulation
+packages. For situations where connection points are pdfs or user-edited
+Excel sheets, and table dimensions and naming conventions need to be
+dynamically set using pattern recognition.
+
+## Motivation
+
+To enhance code readability and increase the resilience of data
+pipelines between uncommon sources and standardized reports. In keeping
+with the report oriented end result, a few methods included in this
+package are aimed at preparing data for export.
 
 ## Installation
 

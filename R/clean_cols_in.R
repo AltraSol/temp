@@ -4,12 +4,17 @@
 #' white space, replaces spaces with underscores and slashes with periods;
 #' optionally changes string case.
 #'
+#' @param column_names A character vector of column names.
+#' @param case An optional argument to change the case of the
+#' strings provided to \code{"upper", "lower",} or \code{"proper"}.
+#'
 #' @return A vector of characters.
 #' @importFrom stringr str_squish
 #' @seealso [clean_cols_out()]
 #' @export
 #' @examples
 #' column_names <- c("Amount$", "Payment Date\r\n(mm/dd/yyyy)")
+#' column_names
 #' clean_cols_in(column_names, "lower")
 clean_cols_in <-
   function(column_names,

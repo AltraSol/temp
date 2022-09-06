@@ -6,7 +6,9 @@
 \alias{vary-package}
 \title{vary: Manage Unstructured Data}
 \description{
-Implement techniques to structure data and improve readability of data pipelines when the source is expected to vary or have no structure at all.
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+
+Methods to reliably structure data when the source is expected to vary in format or have no structure at all.
 }
 \author{
 \strong{Maintainer}: Chris Ulch \email{culch@ualberta.ca}

@@ -40,4 +40,12 @@ library(vary)
 ?vary::which_rows()
 ?vary::clean_cols_in()
 ?vary::clean_cols_out()
+?vary::drop_na_rows()
+?vary::drop_na_cols()
+# ?vary::files_matching()
+# ?vary::flatten_page_list()
+# ?vary::get_downloads_folder()
+# ?vary::load_required()
+# ?vary::proper_case()
+# ?vary::`%notin%`
 ```

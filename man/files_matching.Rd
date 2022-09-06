@@ -2,17 +2,29 @@
 % Please edit documentation in R/files_matching.R
 \name{files_matching}
 \alias{files_matching}
-\title{Search a directory for files}
+\title{Locate files in a directory}
 \usage{
-files_matching(path, file_type, name_contains = NULL, ignore.case = T)
+files_matching(path, file_type, name_contains = NULL, ignore.case = TRUE)
 }
 \value{
-An integer vectors or list of integer vectors.
+A three column tibble.
 }
 \description{
-todo
+Search a directory for a given file type and name, return
+a tibble of matching file information sorted by modified date.
 }
 \examples{
-files_matching(getwd(), "pdf")
-files_matching(getwd(), "xlsm", name_contains = "a")
+search_directory <- getwd() # change prior to running example
+
+# search for pdf files
+files_matching(search_directory, ".pdf")
+
+# search for Excel files with "report" included in the title
+files_matching(search_directory, ".xlsx", name_contains = "report")
+
+df_matches <- files_matching(search_directory, ".R")
+df_matches
+
+latest_match <- df_matches$path[1]
+latest_match
 }

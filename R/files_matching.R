@@ -4,6 +4,7 @@
 #' a tibble of matching file information sorted by modified date.
 #'
 #' @return A three column tibble.
+#' @import dplyr
 #' @export
 #' @examples
 #' search_directory <- getwd() # change prior to running example

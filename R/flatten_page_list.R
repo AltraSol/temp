@@ -6,6 +6,10 @@
 #' in a meaningful way.
 #'
 #' @return A one column tibble.
+#' @import dplyr
+#' @importFrom stringr str_split
+#' @importFrom stringr str_squish
+#' @importFrom purrr map
 #' @export
 #' @examples
 #' \code{ex_page1 <- paste0(stringr::fruit[1:5], collapse = "\n")}

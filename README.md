@@ -86,7 +86,7 @@ Using filter, 2 rows returned & 1 missed due to column misalignment
 
 ## R Documentation
 
-#### Use ?vary to view a linked list of the documentation
+##### Use ?vary to view a linked list of all functions
 
 Structure Data
 

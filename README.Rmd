@@ -5,7 +5,13 @@ output: github_document
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r setup, include = FALSE}
-
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+options(tibble.print_min = 5, tibble.print_max = 5)
 ```
 
 # vary <a href='https://github.com/ulchc/vary'><img src='man/figures/logo.png' align="right" height="139" /></a>
@@ -29,21 +35,65 @@ devtools::install_github("ulchc/vary")
 ## Usage
 
 After installation from GitHub, you can load it with:
-
 ```{r}
 library(vary)
 ```
 
-## Documentation
+```{r, include=FALSE}
+library(tidyr)
+library(dplyr)
 
-```{r, eval=FALSE}
-?vary::which_rows()
-?vary::files_matching()
-?vary::flatten_page_list()
-?vary::get_downloads_folder()
-?vary::clean_cols_in()
-?vary::clean_cols_out()
-?vary::drop_na_rows()
-?vary::drop_na_cols()
-?vary::`%notin%`
+set.seed(1)
+mismatched <- tidyr::table2
+n_rows <- sample(nrow(mismatched), 5)
+mismatched[n_rows, 1] <- table2[n_rows, 3]
+mismatched[n_rows, 3] <- table2[n_rows, 1]
 ```
+
+```{r, echo=FALSE}
+message("An example of data with mismatched columns: 'country' <-> 'type'")
+mismatched
+```
+
+```{r}
+row_index <-
+  which_rows(
+    mismatched,
+    contain_strings = c("CASES", "2000"),
+    all_strings = TRUE,
+    case_sensitive = FALSE,
+    flatten = TRUE
+  )
+```
+```{r}
+mismatched[row_index, ]
+```
+Using row_index, 3 rows returned for cases in 2000
+```{r}
+mismatched %>% filter(type == "cases" & year == 2000)
+```
+Using filter, 2 rows returned & 1 missed due to column misalignment
+
+## R Documentation
+
+#### Use ?vary to view a linked list of the documentation
+
+Structure Data
+```{r, eval=FALSE}
+?which_rows()
+?flatten_page_list()
+?drop_na_rows()
+?drop_na_cols()
+```
+Locate Files
+```{r, eval=FALSE}
+?get_downloads_folder()
+?files_matching()
+```
+Other (possible future relocation)
+```{r, eval=FALSE}
+?clean_cols_in()
+?clean_cols_out()
+?`%notin%`
+```
+

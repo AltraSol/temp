@@ -39,16 +39,75 @@ After installation from GitHub, you can load it with:
 library(vary)
 ```
 
-## Documentation
+    #> An example of data with mismatched columns: 'country' <-> 'type'
+    #> # A tibble: 12 × 4
+    #>   country      year type           count
+    #>   <chr>       <int> <chr>          <int>
+    #> 1 cases        1999 Afghanistan      745
+    #> 2 population   1999 Afghanistan 19987071
+    #> 3 Afghanistan  2000 cases           2666
+    #> 4 population   2000 Afghanistan 20595360
+    #> 5 Brazil       1999 cases          37737
+    #> # … with 7 more rows
 
 ``` r
-?vary::which_rows()
-?vary::files_matching()
-?vary::flatten_page_list()
-?vary::get_downloads_folder()
-?vary::clean_cols_in()
-?vary::clean_cols_out()
-?vary::drop_na_rows()
-?vary::drop_na_cols()
-?vary::`%notin%`
+row_index <-
+  which_rows(
+    mismatched,
+    contain_strings = c("CASES", "2000"),
+    all_strings = TRUE,
+    case_sensitive = FALSE,
+    flatten = TRUE
+  )
+```
+
+``` r
+mismatched[row_index, ]
+#> # A tibble: 3 × 4
+#>   country      year type    count
+#>   <chr>       <int> <chr>   <int>
+#> 1 Afghanistan  2000 cases    2666
+#> 2 cases        2000 Brazil  80488
+#> 3 China        2000 cases  213766
+```
+
+Using row_index, 3 rows returned for cases in 2000
+
+``` r
+mismatched %>% filter(type == "cases" & year == 2000)
+#> # A tibble: 2 × 4
+#>   country      year type   count
+#>   <chr>       <int> <chr>  <int>
+#> 1 Afghanistan  2000 cases   2666
+#> 2 China        2000 cases 213766
+```
+
+Using filter, 2 rows returned & 1 missed due to column misalignment
+
+## R Documentation
+
+#### Use ?vary to view a linked list of the documentation
+
+Structure Data
+
+``` r
+?which_rows()
+?flatten_page_list()
+?drop_na_rows()
+?drop_na_cols()
+```
+
+Locate Files
+
+``` r
+?get_downloads_folder()
+?files_matching()
+```
+
+Other (possible future relocation)
+
+``` r
+?clean_cols_in()
+?clean_cols_out()
+?`%notin%`
 ```

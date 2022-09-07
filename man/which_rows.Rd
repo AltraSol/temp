@@ -63,7 +63,7 @@ n_rows <- sample(nrow(data), 5)
 data[n_rows, 1] <- table2[n_rows, 3]
 data[n_rows, 3] <- table2[n_rows, 1]
 
-data # example tibble with mismatched columns
+data # where type & country columns mismatched
 
 # EX. 1 ---------------------------------------
 row_index <-
@@ -77,9 +77,9 @@ row_index <-
 
 # NOTE: able to directly subset because flatten = TRUE
 
-# 3 rows which correspond with cases in 2000
+# 3 rows returned which correspond with cases in 2000
 data[row_index, ]
-# 2 rows
+# 2 rows returned 1 missed with filter due to column misalignment
 data \%>\% filter(type == "cases" & year == 2000)
 
 # EX. 2 ---------------------------------------
@@ -94,15 +94,15 @@ row_indices <-
 # NOTE: list returned because flatten = FALSE
 
 # where "1999" occurs in string of row vals
-data[row_indices[[1]], ]
+data[row_indices$`contains string: '1999'`, ]
 # where "population" occurs in string of row vals
-data[row_indices[[2]], ]
+data[row_indices$`contains string: 'population'`, ]
 
 # EX. 3 ---------------------------------------
 row_index_alt <-
   which_rows(
     data,
-    # row strings combine col values in sequence with " "
+    # which_rows combines cols for each row separated by " "
     contain_strings = c("1999 population"),
     all_strings = TRUE,
     flatten = TRUE

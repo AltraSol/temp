@@ -1,3 +1,4 @@
+#' @useDynLib vary, .registration = TRUE
 #' @seealso Structure Data
 #' @seealso * [which_rows()]
 #' @seealso * [flatten_page_list()]

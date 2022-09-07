@@ -8,7 +8,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Methods to reliably structure data when the source is expected to vary in format or have no structure at all.
+Methods to reliably structure data when the source format or load point is expected to vary over time; or when inputs lack structure completely and are not immediately compatible with typical data manipulation packages. For situations where connection points are pdfs or user-edited Excel sheets, and table dimensions and naming conventions need to be dynamically set using pattern recognition.
 }
 \author{
 \strong{Maintainer}: Chris Ulch \email{culch@ualberta.ca}

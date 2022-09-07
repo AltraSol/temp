@@ -9,6 +9,8 @@
 #' @param rm_empty_str If `TRUE`, removes blank lines which translate to row values of ""
 #' @return A one column tibble.
 #' @import dplyr
+#' @importFrom pdftools pdf_ocr_text
+#' @importFrom pdftools pdf_text
 #' @importFrom stringr str_split
 #' @importFrom stringr str_squish
 #' @importFrom purrr map

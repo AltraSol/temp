@@ -53,32 +53,61 @@ columns into a single string separated by a space (" ") and returns the indices
 which pass the conditions of the arguments.
 }
 \examples{
-set.seed(1)
-sample_data <- CO2[sample(nrow(CO2), 50), ]
-sample_data
+library(tidyr)
+library(dplyr)
 
+# Generate Data -------------------------------
+set.seed(1)
+data <- tidyr::table2
+n_rows <- sample(nrow(data), 5)
+data[n_rows, 1] <- table2[n_rows, 3]
+data[n_rows, 3] <- table2[n_rows, 1]
+
+data # example tibble with mismatched columns
+
+# EX. 1 ---------------------------------------
 row_index <-
   which_rows(
-    sample_data,
-    contain_strings = c("Qc", "QUEBEC", "1000"),
+    data,
+    contain_strings = c("CASES", "2000"),
     all_strings = TRUE,
     case_sensitive = FALSE,
-    flatten = TRUE # to directly subset
+    flatten = TRUE
   )
 
-# where each string occurs in string of row vals
-sample_data[row_index, ]
+# NOTE: able to directly subset because flatten = TRUE
 
+# 3 rows which correspond with cases in 2000
+data[row_index, ]
+# 2 rows
+data \%>\% filter(type == "cases" & year == 2000)
+
+# EX. 2 ---------------------------------------
 row_indices <-
   which_rows(
-    sample_data,
-    contain_strings = c("Mc1", "nonchilled 500"),
+    data,
+    contain_strings = c("1999", "population"),
     all_strings = FALSE,
-    flatten = FALSE # to view index list
+    flatten = FALSE
   )
 
-# where "Missis" occurs in string of row vals
-sample_data[row_indices[[1]], ]
-# where "nonchilled 500" occurs in string of row vals
-sample_data[row_indices[[2]], ]
+# NOTE: list returned because flatten = FALSE
+
+# where "1999" occurs in string of row vals
+data[row_indices[[1]], ]
+# where "population" occurs in string of row vals
+data[row_indices[[2]], ]
+
+# EX. 3 ---------------------------------------
+row_index_alt <-
+  which_rows(
+    data,
+    # row strings combine col values in sequence with " "
+    contain_strings = c("1999 population"),
+    all_strings = TRUE,
+    flatten = TRUE
+  )
+
+# cases where "1999" was found immediately to the left of "population"
+data[row_index_alt, ]
 }

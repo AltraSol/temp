@@ -1,7 +1,6 @@
-#' @useDynLib vary, .registration = TRUE
 #' @seealso Structure Data
 #' @seealso * [which_rows()]
-#' @seealso * [flatten_page_list()]
+#' @seealso * [flatten_page_lines()]
 #' @seealso * [drop_na_rows()]
 #' @seealso * [drop_na_cols()]
 #' @seealso Locate Files

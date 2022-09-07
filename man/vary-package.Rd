@@ -18,7 +18,7 @@ Structure Data
 }
 
 \itemize{
-\item \code{\link[=flatten_page_list]{flatten_page_list()}}
+\item \code{\link[=flatten_page_lines]{flatten_page_lines()}}
 }
 
 \itemize{

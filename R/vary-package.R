@@ -1,4 +1,3 @@
-#' @import vary
 #' @seealso Structure Data
 #' @seealso * [which_rows()]
 #' @seealso * [flatten_page_list()]

@@ -10,6 +10,49 @@
 
 Methods to reliably structure data when the source format or load point is expected to vary over time; or when inputs lack structure completely and are not immediately compatible with typical data manipulation packages. For situations where connection points are pdfs or user-edited Excel sheets, and table dimensions and naming conventions need to be dynamically set using pattern recognition.
 }
+\seealso{
+Structure Data
+
+\itemize{
+\item \code{\link[=which_rows]{which_rows()}}
+}
+
+\itemize{
+\item \code{\link[=flatten_page_list]{flatten_page_list()}}
+}
+
+\itemize{
+\item \code{\link[=drop_na_rows]{drop_na_rows()}}
+}
+
+\itemize{
+\item \code{\link[=drop_na_cols]{drop_na_cols()}}
+}
+
+Locate Files
+
+\itemize{
+\item \code{\link[=get_downloads_folder]{get_downloads_folder()}}
+}
+
+\itemize{
+\item \code{\link[=files_matching]{files_matching()}}
+}
+
+Other \emph{(possible future relocation)}
+
+\itemize{
+\item \code{\link[=clean_cols_in]{clean_cols_in()}}
+}
+
+\itemize{
+\item \code{\link[=clean_cols_out]{clean_cols_out()}}
+}
+
+\itemize{
+\item \code{\link{\%notin\%}}
+}
+}
 \author{
 \strong{Maintainer}: Chris Ulch \email{culch@ualberta.ca}
 

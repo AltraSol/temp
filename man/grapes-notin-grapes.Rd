@@ -4,18 +4,18 @@
 \alias{\%notin\%}
 \title{Negate value matching}
 \usage{
-x \%notin\% y
+abc \%notin\% xyz
 }
 \arguments{
-\item{x}{Vector or NULL: the values to be matched.}
+\item{abc}{Vector or NULL: the values to be matched.}
 
-\item{y}{Vector or NULL: the values to be matched against.}
+\item{xyz}{Vector or NULL: the values to be matched against.}
 }
 \value{
 A vector of the same length as x.
 }
 \description{
-An intuitive counterpart to \code{\%in\%} using \code{Negate()} to return a logical
+An intuitive counterpart to \code{\%in\%} which returns a logical
 vector indicating if the left operand is \emph{not in} the right operand.
 }
 \examples{

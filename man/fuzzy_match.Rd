@@ -32,19 +32,23 @@ match is made, the match is removed from swap_out and swap_in (often resulting i
 \code{q} also changing for the next comparison).
 }
 \examples{
-messy_words <- c("ID #",               # ID
-                 "Barcode",            # Code
-                 "Product\nName",      # Name
-                 "Day of \n the week", # Day
-                 "Month (MMM) ",       # Month
-                 "Amount $")           # Amount
+messy_words <- c(
+  "ID #",               # ID
+  "Barcode",            # Code
+  "Product\nName",      # Name
+  "Day of \n the week", # Day
+  "Month (MMM) ",       # Month
+  "Amount $"            # Amount
+)
 
-clean_words <- c("Amount",
-                 "Month ",
-                 "Day",
-                 "Name",
-                 "Code",
-                 "ID")
+clean_words <- c(
+  "Amount",
+  "Month ",
+  "Day",
+  "Name",
+  "Code",
+  "ID"
+)
 
 swapped_words <- fuzzy_match(swap_out = messy_words,
                              swap_in = clean_words)

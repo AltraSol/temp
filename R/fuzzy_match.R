@@ -24,19 +24,23 @@
 #' @importFrom stringi stri_replace_rstr
 #' @export
 #' @examples
-#' messy_words <- c("ID #",               # ID
-#'                  "Barcode",            # Code
-#'                  "Product\nName",      # Name
-#'                  "Day of \n the week", # Day
-#'                  "Month (MMM) ",       # Month
-#'                  "Amount $")           # Amount
+#' messy_words <- c(
+#'   "ID #",               # ID
+#'   "Barcode",            # Code
+#'   "Product\nName",      # Name
+#'   "Day of \n the week", # Day
+#'   "Month (MMM) ",       # Month
+#'   "Amount $"            # Amount
+#' )
 #'
-#' clean_words <- c("Amount",
-#'                  "Month ",
-#'                  "Day",
-#'                  "Name",
-#'                  "Code",
-#'                  "ID")
+#' clean_words <- c(
+#'   "Amount",
+#'   "Month ",
+#'   "Day",
+#'   "Name",
+#'   "Code",
+#'   "ID"
+#' )
 #'
 #' swapped_words <- fuzzy_match(swap_out = messy_words,
 #'                              swap_in = clean_words)

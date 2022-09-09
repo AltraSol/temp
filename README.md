@@ -102,8 +102,8 @@ messy_data %>%
 #> 2 5.1.0 222   Book     Friday   APR   19.00
 ```
 
-Use fuzzy_match() to detect similarities between different sized
-character vectors
+Use fuzzy_match() to categorize and handle spelling mistakes from OCR
+text
 
 ``` r
 colors_list
@@ -112,21 +112,25 @@ colors_list
 
 ``` r
 color_phrases
-#> [1] "The sunrise was yellow"    "There were purple flowers"
-#> [3] "The water was blue"
+#> [1] "The sunrise was 'yellovv'"   "There were 'purp/e' flowers"
+#> [3] "The fruit was 'orang e'"
 ```
 
 ``` r
 colors_mentioned <- fuzzy_match(color_phrases, colors_list)
 #> > Fuzzy Matches
-#> `The sunrise was yellow` -> `Yellow`
-#> `There were purple flowers` -> `Purple`
-#> `The water was blue` -> `Blue`
+#> `The sunrise was 'yellovv'` -> `Yellow`
+#> `There were 'purp/e' flowers` -> `Purple`
+#> `The fruit was 'orang e'` -> `Orange`
+#> > Incompatible?
+#> `There were 'purp/e' flowers` may have a dissimilar fuzzy match
+
+# A message will indicate when there is a large string distance between fuzzy matches
 ```
 
 ``` r
 writeLines(paste0("The colors mentioned were: ", paste0(colors_mentioned, collapse = ", ")))
-#> The colors mentioned were: Yellow, Purple, Blue
+#> The colors mentioned were: Yellow, Purple, Orange
 ```
 
 Use which_rows() to filter data with mismatched columns

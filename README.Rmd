@@ -62,9 +62,9 @@ messy_data <- tibble(
 )
 
 color_phrases <- c(
-  "The sunrise was yellow",
-  "There were purple flowers",
-  "The water was blue"
+  "The sunrise was 'yellovv'",
+  "There were 'purp/e' flowers",
+  "The fruit was 'orang e'"
 )
 
 colors_list <- c(
@@ -114,7 +114,7 @@ messy_data %>%
   rbind(data)
 ```
 
-Use fuzzy_match() to detect similarities between different sized character vectors
+Use fuzzy_match() to categorize and handle spelling mistakes from OCR text
 ```{r}
 colors_list
 ```
@@ -124,6 +124,8 @@ color_phrases
 
 ```{r}
 colors_mentioned <- fuzzy_match(color_phrases, colors_list)
+
+# A message will indicate when there is a large string distance between fuzzy matches
 ```
 ```{r}
 writeLines(paste0("The colors mentioned were: ", paste0(colors_mentioned, collapse = ", ")))

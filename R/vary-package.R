@@ -1,5 +1,7 @@
 #' @seealso Structure Data
 #' @seealso * [which_rows()]
+#' @seealso * [fuzzy_match()]
+#' @seealso * [fuzzy_rename()]
 #' @seealso * [flatten_page_lines()]
 #' @seealso * [drop_na_rows()]
 #' @seealso * [drop_na_cols()]

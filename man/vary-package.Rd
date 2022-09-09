@@ -18,6 +18,14 @@ Structure Data
 }
 
 \itemize{
+\item \code{\link[=fuzzy_match]{fuzzy_match()}}
+}
+
+\itemize{
+\item \code{\link[=fuzzy_rename]{fuzzy_rename()}}
+}
+
+\itemize{
 \item \code{\link[=flatten_page_lines]{flatten_page_lines()}}
 }
 

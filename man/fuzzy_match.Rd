@@ -7,12 +7,12 @@
 fuzzy_match(swap_out, swap_in)
 }
 \arguments{
-\item{swap_out}{A character vector.}
+\item{swap_out}{A vector of characters.}
 
-\item{swap_in}{A character vector >= \code{length(swap_out)}.}
+\item{swap_in}{A vector of characters >= \code{length(swap_out)}.}
 }
 \value{
-A character list equal in length to \code{swap_out}.
+A character vector equal in length to \code{swap_out}.
 }
 \description{
 Substitutes all elements of \code{swap_out} with one from \code{swap_in}. All
@@ -56,18 +56,22 @@ swapped_words # order preserved, best matches substituted
 
 
 # swap_out must be <= in length as swap_in
-color_phrases <- c("The sunrise was yellow",
-                   "There were purple flowers",
-                   "The water was blue")
+color_phrases <- c(
+  "The sunrise was yellow",
+  "There were purple flowers",
+  "The water was blue"
+)
 
 # swap_in can be any length >= swap_out
-colors_list <- c("Red",
-                 "Blue",
-                 "Green",
-                 "Yellow",
-                 "Violet",
-                 "Purple",
-                 "Orange")
+colors_list <- c(
+  "Red",
+  "Blue",
+  "Green",
+  "Yellow",
+  "Violet",
+  "Purple",
+  "Orange"
+)
 
 colors_mentioned <- fuzzy_match(color_phrases, colors_list)
 writeLines(paste0("The colors mentioned were: ",

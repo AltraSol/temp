@@ -9,8 +9,8 @@
 #' the first element will proceed. A comparison of this element and
 #' the remainder of `swap_in` is then made to assign the final match.
 #'
-#' @param swap_out A character vector.
-#' @param swap_in A character vector >= `length(swap_out)`.
+#' @param swap_out A vector of characters.
+#' @param swap_in A vector of characters >= `length(swap_out)`.
 #'
 #' @details Implements the running cosine matching algorithm from [stringdist::afind()]
 #' with `q = min(nchar(swap_out))` to choose the next element to match, and
@@ -18,7 +18,7 @@
 #' match is made, the match is removed from swap_out and swap_in (often resulting in
 #' `q` also changing for the next comparison).
 #'
-#' @return A character list equal in length to `swap_out`.
+#' @return A character vector equal in length to `swap_out`.
 #'
 #' @importFrom stringdist afind
 #' @importFrom stringi stri_replace_rstr
@@ -48,18 +48,22 @@
 #'
 #'
 #' # swap_out must be <= in length as swap_in
-#' color_phrases <- c("The sunrise was yellow",
-#'                    "There were purple flowers",
-#'                    "The water was blue")
+#' color_phrases <- c(
+#'   "The sunrise was yellow",
+#'   "There were purple flowers",
+#'   "The water was blue"
+#' )
 #'
 #' # swap_in can be any length >= swap_out
-#' colors_list <- c("Red",
-#'                  "Blue",
-#'                  "Green",
-#'                  "Yellow",
-#'                  "Violet",
-#'                  "Purple",
-#'                  "Orange")
+#' colors_list <- c(
+#'   "Red",
+#'   "Blue",
+#'   "Green",
+#'   "Yellow",
+#'   "Violet",
+#'   "Purple",
+#'   "Orange"
+#' )
 #'
 #' colors_mentioned <- fuzzy_match(color_phrases, colors_list)
 #' writeLines(paste0("The colors mentioned were: ",

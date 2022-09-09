@@ -40,11 +40,11 @@ messy_data <- tibble(
   `ID #`               = "5.1.1"
 )
 
-# underlying similarity but incompatible
+# underlying data is equivalent, but naming conventions are not
 messy_data
 data
 
-# no names are exactly the same before to fuzzy_rename
+# no names are compatible between sources
 tibble(names(data), names(messy_data))
 # all names matched when using fuzzy_rename
 tibble(names(data), names(fuzzy_rename(messy_data, names(data))))

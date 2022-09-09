@@ -47,11 +47,11 @@
 #' swapped_words # order preserved, best matches substituted
 #'
 #'
-#' # swap_out must be <= in length as swap_in
+#' # categorize and handle spelling mistakes from OCR text
 #' color_phrases <- c(
-#'   "The sunrise was yellow",
-#'   "There were purple flowers",
-#'   "The water was blue"
+#'   "The sunrise was 'yellovv'",
+#'   "There were 'purp/e' flowers",
+#'   "The fruit was 'orang e'"
 #' )
 #'
 #' # swap_in can be any length >= swap_out
@@ -65,9 +65,13 @@
 #'   "Orange"
 #' )
 #'
+#' # a notice will be shown where there is a potential incompatible fuzzy match
 #' colors_mentioned <- fuzzy_match(color_phrases, colors_list)
-#' writeLines(paste0("The colors mentioned were: ",
-#'                   paste0(colors_mentioned, collapse = ", ")))
+#'
+#' writeLines(paste0(
+#'   "The colors mentioned were: ",
+#'   paste0(colors_mentioned, collapse = ", ")
+#' ))
 fuzzy_match <- function(swap_out, swap_in) {
   if (length(swap_out) > length(swap_in)) {
     warning("Length of swap_out cannot be greater than swap_in")

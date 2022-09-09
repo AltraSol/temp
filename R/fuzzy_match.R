@@ -76,14 +76,14 @@ fuzzy_match <- function(swap_out, swap_in) {
   index_perf_in <- which(swap_in %in% swap_out)
   if (length(index_perf_out) != 0) {
     new_list[index_perf_out] <- swap_out[index_perf_out]
-    writeLines("\nPerfect Matches")
+    writeLines("> Perfect Matches")
     for (item in new_list[!is.na(new_list)]) {
       message(paste0("`", item, "`"))
     }
     swap_out <- swap_out[-index_perf_out]
     swap_in <- swap_in[-index_perf_in]
   }
-  writeLines("\nFuzzy Matches")
+  writeLines("> Fuzzy Matches")
   while (length(swap_out) != 0) {
     out_mat <-
       afind(swap_out,
@@ -135,16 +135,14 @@ fuzzy_match <- function(swap_out, swap_in) {
     swap_in <- swap_in[-swap_in_index]
   }
   if (length(dissimilar_matches) != 0) {
-    writeLines("\n*WARNING*")
+    writeLines("> Incompatible?")
     message(
-      paste0(paste0(gsub(
+      paste0(gsub(
         "\\\n", "\\\\n", unlist(dissimilar_matches)
       ),
       collapse = "\n"
-      ), "\n")
+      )
     )
-  } else {
-    message(" \n ")
   }
   return(new_list)
 }

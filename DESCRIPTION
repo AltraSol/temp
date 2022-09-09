@@ -19,7 +19,9 @@ Imports:
   stringr,
   tidyr,
   openxlsx,
-  pdftools
+  pdftools,
+  stringdist,
+  stringi
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.2.1

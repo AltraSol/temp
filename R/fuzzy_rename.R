@@ -32,7 +32,7 @@
 #'   `ID #`               = "5.1.1"
 #' )
 #'
-#' # underlying similarly but incompatible
+#' # underlying similarity but incompatible
 #' messy_data
 #' data
 #'

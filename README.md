@@ -160,7 +160,7 @@ row_index <-
 ```
 
 ``` r
-# Using row_index returned by which_rows() is an option to return all rows when there is mismatched data
+# Using which_rows() is a non-verbose option to filter data prior to resolving mismatched attributes
 ```
 
 ``` r
@@ -174,7 +174,7 @@ mismatched[row_index, ]
 ```
 
 ``` r
-# filter cannot be used until the mismatched columns are resolved; only 2/3 of the rows would be returned  
+# filter would not work under these conditions and would only return 2/3 of the rows 
 ```
 
 ``` r

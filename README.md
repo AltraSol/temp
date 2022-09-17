@@ -11,18 +11,11 @@
 ## Overview
 
 Methods to reliably structure data when the source format or load point
-is expected to vary over time; or when inputs lack structure completely
+is expected to vary over time, or when inputs lack structure completely
 and are not immediately compatible with typical data manipulation
-packages. For situations where connection points are pdfs or user-edited
-Excel sheets, and table dimensions and naming conventions need to be
-dynamically set using pattern recognition.
-
-## Motivation
-
-To enhance code readability and increase the resilience of data
-pipelines between uncommon sources and standardized reports. In keeping
-with the report oriented end result, a few methods included in this
-package are aimed at preparing data for export.
+packages (ex. OCR output, user-edited Excel sheets). Streamlines a few
+string methods to make field verification with pattern recognition
+easier.
 
 ## Installation
 

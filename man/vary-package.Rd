@@ -44,6 +44,10 @@ Locate Files
 }
 
 \itemize{
+\item \code{\link[=get_desktop_folder]{get_desktop_folder()}}
+}
+
+\itemize{
 \item \code{\link[=files_matching]{files_matching()}}
 }
 

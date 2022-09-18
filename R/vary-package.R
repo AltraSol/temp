@@ -7,6 +7,7 @@
 #' @seealso * [drop_na_cols()]
 #' @seealso Locate Files
 #' @seealso * [get_downloads_folder()]
+#' @seealso * [get_desktop_folder()]
 #' @seealso * [files_matching()]
 #' @seealso Other _(possible future relocation)_
 #' @seealso * [clean_cols_in()]

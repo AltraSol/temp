@@ -24,5 +24,5 @@
 #' drop_na_cols(sample_data)
 #' drop_na_cols(sample_data, percent_incomplete = 90)
 drop_na_cols <- function(df, percent_incomplete = 100) {
-  return(df[(1 - rowSums(is.na(df))/ncol(df))*100 > (100 - percent_incomplete), ])
+  return(df[, (1 - colSums(is.na(df))/nrow(df))*100 > (100 - percent_incomplete)])
 }

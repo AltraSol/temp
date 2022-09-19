@@ -13,5 +13,7 @@ A character file path.
 Return the path to the desktop directory regardless of operating system.
 }
 \examples{
+\dontrun{
 get_desktop_folder()
+}
 }

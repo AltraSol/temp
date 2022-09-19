@@ -20,6 +20,8 @@ Returns a tibble or data frame without rows containing only NA values. If
 values greater than or equal to \code{percent_incomplete} will be dropped.
 }
 \examples{
+library(tidyr)
+
 sample_data <-
   tibble(rbind(
     head(iris, 5),

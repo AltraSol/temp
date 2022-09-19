@@ -7,10 +7,11 @@
 #' @param df A data frame or tibble.
 #' @param percent_incomplete A numeric value.
 #' @return A data frame or tibble.
-#' @importFrom tidyr tibble
 #' @export
 #' @seealso [drop_na_rows()]
 #' @examples
+#' library(tidyr)
+#'
 #' sample_data <-
 #'   tibble(
 #'     head(iris, 10),

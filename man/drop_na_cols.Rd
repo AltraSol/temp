@@ -4,22 +4,33 @@
 \alias{drop_na_cols}
 \title{Drop NA columns}
 \usage{
-drop_na_cols(df)
+drop_na_cols(df, percent_incomplete = 100)
 }
 \arguments{
 \item{df}{A data frame or tibble.}
+
+\item{percent_incomplete}{A numeric value.}
 }
 \value{
 A data frame or tibble.
 }
 \description{
-Returns a data frame without columns containing only NA values.
+Returns a tibble or data frame without columns containing only NA values. If
+\code{percent_incomplete} is supplied, any column which has greater than or equal to
+the percentage of NA values will be dropped.
 }
 \examples{
-sample_data <- data.frame(head(iris, 5), NA_col = rep(NA, 5))
+sample_data <-
+  tibble(
+    head(iris, 10),
+    NA_100p = rep(NA, 10),
+    NA_90p = c(1, rep(NA, 9))
+  )
+
 sample_data
 
 drop_na_cols(sample_data)
+drop_na_cols(sample_data, percent_incomplete = 90)
 }
 \seealso{
 \code{\link[=drop_na_rows]{drop_na_rows()}}

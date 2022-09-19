@@ -6,12 +6,13 @@
 #'
 #' @importFrom stringr str_locate_all
 #' @importFrom stringr str_trunc
+#' @importFrom utils tail
 #' @export
 #' @examples
 #' get_desktop_folder()
 get_desktop_folder <- function() {
-  last_file.sep <-
-    tail(unlist(str_locate_all(
+  last_file_sep <-
+    utils::tail(unlist(str_locate_all(
       file.path(path.expand("~")),
       .Platform$file.sep
     )), 1)
@@ -19,7 +20,7 @@ get_desktop_folder <- function() {
     paste0(
       str_trunc(
         file.path(path.expand("~")),
-        width = last_file.sep,
+        width = last_file_sep,
         ellipsis = ""
       ), "Desktop"
     )

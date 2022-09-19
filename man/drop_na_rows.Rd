@@ -4,22 +4,33 @@
 \alias{drop_na_rows}
 \title{Drop NA rows}
 \usage{
-drop_na_rows(df)
+drop_na_rows(df, percent_incomplete = 100)
 }
 \arguments{
 \item{df}{A data frame or tibble.}
+
+\item{percent_incomplete}{A numeric value.}
 }
 \value{
 A data frame or tibble.
 }
 \description{
-Returns a data frame without rows containing only NA values.
+Returns a tibble or data frame without rows containing only NA values. If
+\code{percent_incomplete} is supplied, any row which has a total percentage of NA
+values greater than or equal to \code{percent_incomplete} will be dropped.
 }
 \examples{
-sample_data <- rbind(head(iris, 5), rep(NA, 5))
+sample_data <-
+  tibble(rbind(
+    head(iris, 5),
+    rep(NA, 5),
+    c(1, rep(NA, 4)))
+  )
+
 sample_data
 
 drop_na_rows(sample_data)
+drop_na_rows(sample_data, percent_incomplete = 75)
 }
 \seealso{
 \code{\link[=drop_na_cols]{drop_na_cols()}}

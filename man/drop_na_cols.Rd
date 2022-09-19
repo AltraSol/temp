@@ -16,8 +16,8 @@ A data frame or tibble.
 }
 \description{
 Returns a tibble or data frame without columns containing only NA values. If
-\code{percent_incomplete} is supplied, any column which has greater than or equal to
-the percentage of NA values will be dropped.
+\code{percent_incomplete} is supplied, any column which has a total percentage of NA
+values greater than or equal to \code{percent_incomplete} will be dropped.
 }
 \examples{
 sample_data <-

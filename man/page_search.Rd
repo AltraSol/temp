@@ -30,7 +30,7 @@ item is not representative of a page, the page column will only represent the
 index of the original character vector.
 }
 \examples{
-\donttest{
+\dontrun{
 # return the R manual folder path
 r_manual_dir <- paste0(R.home("doc"), .Platform$file.sep, "manual")
 

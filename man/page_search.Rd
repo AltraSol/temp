@@ -14,7 +14,7 @@ page_search(char_list, term, detail_level = c("page", "paragraph", "line"))
 \item{detail_level}{One of: \code{c("page", "paragraph", "line")}.}
 }
 \value{
-A tibble with columns \code{page}, \code{index}, and \code{value}.
+A tibble with columns \code{query}, \code{page}, \code{detail_level}, and \code{value}.
 }
 \description{
 Returns sequences of characters at the \code{detail_level} specified, with each row

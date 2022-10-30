@@ -15,7 +15,7 @@
 #' @param term A string to locate in the vector of characters.
 #' @param detail_level One of: `c("page", "paragraph", "line")`.
 #'
-#' @return A tibble with columns `page`, `index`, and `value`.
+#' @return A tibble with columns `query`, `page`, `detail_level`, and `value`.
 #' @import dplyr
 #' @importFrom stringr str_detect
 #' @importFrom stringr str_extract

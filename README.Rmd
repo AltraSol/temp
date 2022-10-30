@@ -170,16 +170,16 @@ mismatched %>% filter(type == "cases" & year == 2000)
 ?which_rows()
 ?fuzzy_match()
 ?fuzzy_rename()
-?flatten_page_list()
+?flatten_pages()
+?page_search()
 ?drop_na_rows()
 ?drop_na_cols()
 
 # Locate Files
 ?get_downloads_folder()
+?get_desktop_folder()
 ?files_matching()
 
 # Other (possible future relocation)
-?clean_cols_in()
-?clean_cols_out()
 ?`%notin%`
 ```

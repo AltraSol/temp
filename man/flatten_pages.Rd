@@ -21,12 +21,14 @@ a page, paragraph, or line of text. A string other than \code{page}, \code{parag
 that string.
 }
 \details{
-This function was written for use with \code{\link[pdftools:pdftools]{pdftools::pdf_text()}} or \code{\link[pdftools:pdf_ocr]{pdftools::pdf_ocr_text()}},
-meaning that each item in the character vector is assumed to be a \code{page} and is
-labeled as such on the returned tibble. If each item is not representative of a page,
-the page column will only represent the index of the original character vector.
+This function was written for use with \code{\link[pdftools:pdftools]{pdftools::pdf_text()}} or
+\code{\link[pdftools:pdf_ocr]{pdftools::pdf_ocr_text()}}, meaning that each item in the character vector is
+assumed to be a page and is labeled as such on the returned tibble. If each
+item is not representative of a page, the page column will only represent the
+index of the original character vector.
 }
 \examples{
+\donttest{
 # return the R manual folder path
 r_manual_dir <- paste0(R.home("doc"), .Platform$file.sep, "manual")
 
@@ -39,4 +41,5 @@ flatten_pages(manual_text, by = "page")
 flatten_pages(manual_text, by = "line")
 flatten_pages(manual_text, by = "paragraph")
 flatten_pages(manual_text, by = ":")
+}
 }

@@ -5,10 +5,11 @@
 #' `line` can be supplied to the `by` argument to separate text into rows using
 #' that string.
 #'
-#' This function was written for use with [pdftools::pdf_text()] or [pdftools::pdf_ocr_text()],
-#' meaning that each item in the character vector is assumed to be a `page` and is
-#' labeled as such on the returned tibble. If each item is not representative of a page,
-#' the page column will only represent the index of the original character vector.
+#' @details This function was written for use with [pdftools::pdf_text()] or
+#' [pdftools::pdf_ocr_text()], meaning that each item in the character vector is
+#' assumed to be a page and is labeled as such on the returned tibble. If each
+#' item is not representative of a page, the page column will only represent the
+#' index of the original character vector.
 #'
 #' @param page_list A vector of characters (assumed to represent pages of text).
 #' @param by One of: `c("page", "paragraph", "line")` or a custom string to split text into rows.

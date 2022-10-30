@@ -26,7 +26,11 @@ Structure Data
 }
 
 \itemize{
-\item \code{\link[=flatten_page_lines]{flatten_page_lines()}}
+\item \code{\link[=flatten_pages]{flatten_pages()}}
+}
+
+\itemize{
+\item \code{\link[=page_search]{page_search()}}
 }
 
 \itemize{
@@ -52,14 +56,6 @@ Locate Files
 }
 
 Other \emph{(possible future relocation)}
-
-\itemize{
-\item \code{\link[=clean_cols_in]{clean_cols_in()}}
-}
-
-\itemize{
-\item \code{\link[=clean_cols_out]{clean_cols_out()}}
-}
 
 \itemize{
 \item \code{\link{\%notin\%}}

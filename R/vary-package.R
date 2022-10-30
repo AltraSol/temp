@@ -2,7 +2,8 @@
 #' @seealso * [which_rows()]
 #' @seealso * [fuzzy_match()]
 #' @seealso * [fuzzy_rename()]
-#' @seealso * [flatten_page_lines()]
+#' @seealso * [flatten_pages()]
+#' @seealso * [page_search()]
 #' @seealso * [drop_na_rows()]
 #' @seealso * [drop_na_cols()]
 #' @seealso Locate Files
@@ -10,8 +11,6 @@
 #' @seealso * [get_desktop_folder()]
 #' @seealso * [files_matching()]
 #' @seealso Other _(possible future relocation)_
-#' @seealso * [clean_cols_in()]
-#' @seealso * [clean_cols_out()]
 #' @seealso * [`%notin%`]
 #' @keywords internal
 "_PACKAGE"

@@ -22,23 +22,23 @@
 #' @importFrom tidyr separate_rows
 #' @export
 #' @examples
-#' # search the R manual folder
+#' # return the R manual folder path
 #' r_manual_dir <- paste0(R.home("doc"), .Platform$file.sep, "manual")
 #'
-#' # return the first pdf manual
+#' # return the first pdf manual in the directory
 #' latest_match <- files_matching(r_manual_dir, "pdf")$path[1]
 #'
-#' text <- pdf_text(latest_match)
+#' manual_text <- pdftools::pdf_text(latest_match)
 #'
-#' flatten_pages(text, by = "page")
-#' flatten_pages(text, by = "line")
-#' flatten_pages(text, by = "paragraph")
-#' flatten_pages(text, by = ":")
+#' flatten_pages(manual_text, by = "page")
+#' flatten_pages(manual_text, by = "line")
+#' flatten_pages(manual_text, by = "paragraph")
+#' flatten_pages(manual_text, by = ":")
 flatten_pages <- function (page_list, by = c("page", "paragraph", "line")) {
   page_df <-
     pmap_dfr(list(page_list), as_tibble) %>%
-    mutate(page = row_number()) %>%
-    relocate(page, .before = value)
+    mutate(`page` = row_number()) %>%
+    relocate(`page`, .before = value)
   if (by == "page") {
     return(page_df)
   } else if (by == "paragraph") {
@@ -54,7 +54,7 @@ flatten_pages <- function (page_list, by = c("page", "paragraph", "line")) {
       page_df %>%
       separate_rows(value, sep = fixed(by))
   }
-  start_marks <- map2_dbl(.x = pull(page_df, page), .y = lag(pull(page_df, page)), ~ifelse(.x != .y | is.na(.y), 1, 0))
+  start_marks <- map2_dbl(.x = pull(page_df, `page`), .y = lag(pull(page_df, `page`)), ~ifelse(.x != .y | is.na(.y), 1, 0))
   longest_seq <- paste0(start_marks, collapse = "") %>%
     str_split("1") %>%
     unlist() %>%
@@ -62,13 +62,13 @@ flatten_pages <- function (page_list, by = c("page", "paragraph", "line")) {
     max()
   page_by <- start_marks
   for (i in 1:longest_seq) {page_by <- ifelse(lag(page_by) != 0 & page_by == 0,  i + 1, page_by)}
-  page_df$page_by <- paste0(page_df$page, "-", page_by)
+  page_df$page_by <- paste0(page_df$`page`, "-", page_by)
   if (by == "paragraph") {
-    page_df <- page_df %>% select(page, paragraph = page_by, value)
+    page_df <- page_df %>% select(`page`, paragraph = page_by, value)
   } else if (by == "line") {
     page_df <- page_df %>% select(page, line = page_by, value)
   } else {
-    page_df <- page_df %>% select(page, page_by, value)
+    page_df <- page_df %>% select(`page`, page_by, value)
     names(page_df) <- c("page", paste0(by, "_index"), "value")
   }
   return(page_df)

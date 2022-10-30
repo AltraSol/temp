@@ -27,16 +27,16 @@ labeled as such on the returned tibble. If each item is not representative of a 
 the page column will only represent the index of the original character vector.
 }
 \examples{
-# search the R manual folder
+# return the R manual folder path
 r_manual_dir <- paste0(R.home("doc"), .Platform$file.sep, "manual")
 
-# return the first pdf manual
+# return the first pdf manual in the directory
 latest_match <- files_matching(r_manual_dir, "pdf")$path[1]
 
-text <- pdf_text(latest_match)
+manual_text <- pdftools::pdf_text(latest_match)
 
-flatten_pages(text, by = "page")
-flatten_pages(text, by = "line")
-flatten_pages(text, by = "paragraph")
-flatten_pages(text, by = ":")
+flatten_pages(manual_text, by = "page")
+flatten_pages(manual_text, by = "line")
+flatten_pages(manual_text, by = "paragraph")
+flatten_pages(manual_text, by = ":")
 }

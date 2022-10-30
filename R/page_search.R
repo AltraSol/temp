@@ -23,6 +23,7 @@
 #' @seealso [vary::flatten_pages()]
 #' @export
 #' @examples
+#' \donttest{
 #' # return the R manual folder path
 #' r_manual_dir <- paste0(R.home("doc"), .Platform$file.sep, "manual")
 #'
@@ -36,6 +37,7 @@
 #'   term = "data",
 #'   detail_level = "line"
 #' )
+#' }
 page_search <- function(char_list, term, detail_level = c("page", "paragraph", "line")) {
   escape_term <- str_replace_all(term, "([^\\w|\\s|\\d])", "\\\\\\1")
   extract_term <- paste0(escape_term, ".*") %>% regex(ignore_case = T)

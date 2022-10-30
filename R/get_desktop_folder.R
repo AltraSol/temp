@@ -10,9 +10,7 @@
 #' @importFrom utils tail
 #' @export
 #' @examples
-#' \dontrun{
 #' get_desktop_folder()
-#' }
 get_desktop_folder <- function() {
   last_file_sep <-
     tail(

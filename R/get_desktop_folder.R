@@ -5,6 +5,7 @@
 #' @return A character file path.
 #'
 #' @importFrom stringr str_locate_all
+#' @importFrom stringr str_replace_all
 #' @importFrom stringr str_trunc
 #' @importFrom utils tail
 #' @export
@@ -14,10 +15,14 @@
 #' }
 get_desktop_folder <- function() {
   last_file_sep <-
-    utils::tail(unlist(str_locate_all(
-      file.path(path.expand("~")),
-      .Platform$file.sep
-    )), 1)
+    tail(
+      unlist(
+        str_locate_all(
+          str_replace_all(
+            file.path(path.expand("~")),
+            fixed("\\"),
+            .Platform$file.sep),
+          .Platform$file.sep)), 1)
   local_desktop <-
     paste0(
       str_trunc(

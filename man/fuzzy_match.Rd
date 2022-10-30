@@ -16,29 +16,28 @@ A character vector equal in length to \code{swap_out}.
 }
 \description{
 Substitutes all elements of \code{swap_out} with one from \code{swap_in}. All
-perfect matches are immediately substituted, with the order of proceeding
-matches determined by choosing the next element found to minimize the total
-string distance computed by comparing the remainder of \code{swap_out} and \code{swap_in}.
+perfect matches are immediately substituted, with proceeding matches
+assigned based on the smallest string distance computed across the remainder
+of \code{swap_out} and \code{swap_in}.
 }
 \details{
-When two or more elements of \code{swap_out} have equivalent total string distances,
-the first element will proceed. A comparison of this element and
-the remainder of \code{swap_in} is then made to assign the final match.
+When two or more matches have equivalent total string distances, the \code{swap_in}
+term with the maximum variance across all remaining \code{swap_out} terms will proceed.
+In doing so, the most distinct term is removed from the set of potential matches
+so as to leave the terms with the most overlap to the end of the matching sequence.
 
 Implements the running cosine matching algorithm from \code{\link[stringdist:afind]{stringdist::afind()}}
-with \code{q = min(nchar(swap_out))} to choose the next element to match, and
-\code{q = min(nchar(swap_in))} to choose the best match in \code{swap_in}. After each
-match is made, the match is removed from swap_out and swap_in (often resulting in
-\code{q} also changing for the next comparison).
+with a preference for \code{q = 3}, but constrained to the minimum number of characters
+of any string in \code{swap_out} or \code{swap_out}.
 }
 \examples{
 messy_words <- c(
-  "ID #",               # ID
-  "Barcode",            # Code
-  "Product\nName",      # Name
+  "ID #", # ID
+  "Barcode", # Code
+  "Product\nName", # Name
   "Day of \n the week", # Day
-  "Month (MMM) ",       # Month
-  "Amount $"            # Amount
+  "Month (MMM) ", # Month
+  "Amount $" # Amount
 )
 
 clean_words <- c(
@@ -50,8 +49,10 @@ clean_words <- c(
   "ID"
 )
 
-swapped_words <- fuzzy_match(swap_out = messy_words,
-                             swap_in = clean_words)
+swapped_words <- fuzzy_match(
+  swap_out = messy_words,
+  swap_in = clean_words
+)
 swapped_words # order preserved, best matches substituted
 
 

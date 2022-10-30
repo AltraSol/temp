@@ -22,6 +22,7 @@
 #' @importFrom tidyr separate_rows
 #' @export
 #' @examples
+#' \donttest{
 #' # return the R manual folder path
 #' r_manual_dir <- paste0(R.home("doc"), .Platform$file.sep, "manual")
 #'
@@ -34,6 +35,7 @@
 #' flatten_pages(manual_text, by = "line")
 #' flatten_pages(manual_text, by = "paragraph")
 #' flatten_pages(manual_text, by = ":")
+#' }
 flatten_pages <- function (page_list, by = c("page", "paragraph", "line")) {
   page_df <-
     pmap_dfr(list(page_list), as_tibble) %>%

@@ -20,7 +20,9 @@ options(tibble.print_min = 5, tibble.print_max = 5, pillar.bold = TRUE)
 <!-- badges: end -->
 
 ## Overview
-Methods to reliably structure data when the source format or load point is expected to vary over time, or when inputs lack structure completely and are not immediately compatible with typical data manipulation packages (ex. OCR output, user-edited Excel sheets). Streamlines a few string methods to make field verification with pattern recognition easier.
+Methods to automate the loading of semi-structured data (ex. user modified files, OCR output) which are reliable enough to form a process around, but vary too much to immediately work with using typical data manipulation packages. 
+
+Streamlines a few string methods to correct naming convention differences with fuzzy matching and collapse unstructured text into a tibble by any given break-point string. Also adds utilities to drop entries based on NA thresholds and load files without specifying local paths, 
 
 ## Installation
 
@@ -81,7 +83,7 @@ mismatched[n_rows, 1] <- table2[n_rows, 3]
 mismatched[n_rows, 3] <- table2[n_rows, 1]
 ```
 
-Use fuzzy_rename() when it is known that the underlying data between two sources is equivalent 
+Using fuzzy_rename() when it is known that the underlying data between two sources is equivalent 
 ```{r}
 # The attributes of data and messy_data are the same, but naming conventions between the sources differ
 ```

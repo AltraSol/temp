@@ -10,12 +10,16 @@
 
 ## Overview
 
-Methods to reliably structure data when the source format or load point
-is expected to vary over time, or when inputs lack structure completely
-and are not immediately compatible with typical data manipulation
-packages (ex. OCR output, user-edited Excel sheets). Streamlines a few
-string methods to make field verification with pattern recognition
-easier.
+Methods to automate the loading of semi-structured data (ex. user
+modified files, OCR output) which are reliable enough to form a process
+around, but vary too much to immediately work with using typical data
+manipulation packages.
+
+Streamlines a few string methods to correct naming convention
+differences with fuzzy matching and collapse unstructured text into a
+tibble by any given break-point string. Also adds utilities to drop
+entries based on NA thresholds and load files without specifying local
+paths,
 
 ## Installation
 
@@ -32,8 +36,8 @@ After installation from GitHub, you can load it with:
 library(vary)
 ```
 
-Use fuzzy_rename() when it is known that the underlying data between two
-sources is equivalent
+Using fuzzy_rename() when it is known that the underlying data between
+two sources is equivalent
 
 ``` r
 # The attributes of data and messy_data are the same, but naming conventions between the sources differ
@@ -62,12 +66,12 @@ names(data) %in% names(messy_data)
 ``` r
 names(data) %in% names(fuzzy_rename(messy_data, names(data)))
 #> > Fuzzy Matches
-#> `Amount $` -> `Amount`
-#> `Month (MMM) ` -> `Month`
+#> `ID #` -> `ID`
+#> `Barcode` -> `Code`
 #> `Product\nName` -> `Name`
 #> `Day of \n the week` -> `Day`
-#> `Barcode` -> `Code`
-#> `ID #` -> `ID`
+#> `Month (MMM) ` -> `Month`
+#> `Amount $` -> `Amount`
 #> [1] TRUE TRUE TRUE TRUE TRUE TRUE
 
 # fuzzy_rename() will match names and print out the changes
@@ -82,12 +86,12 @@ messy_data %>%
   select(names(data)) %>%
   rbind(data)
 #> > Fuzzy Matches
-#> `Amount $` -> `Amount`
-#> `Month (MMM) ` -> `Month`
+#> `ID #` -> `ID`
+#> `Barcode` -> `Code`
 #> `Product\nName` -> `Name`
 #> `Day of \n the week` -> `Day`
-#> `Barcode` -> `Code`
-#> `ID #` -> `ID`
+#> `Month (MMM) ` -> `Month`
+#> `Amount $` -> `Amount`
 #> # A tibble: 2 × 6
 #>   ID    Code  Name     Day      Month Amount
 #>   <chr> <chr> <chr>    <chr>    <chr> <chr> 
@@ -112,11 +116,9 @@ color_phrases
 ``` r
 colors_mentioned <- fuzzy_match(color_phrases, colors_list)
 #> > Fuzzy Matches
+#> `The fruit was 'orang e'` -> `Orange`
 #> `The sunrise was 'yellovv'` -> `Yellow`
 #> `There were 'purp/e' flowers` -> `Purple`
-#> `The fruit was 'orang e'` -> `Orange`
-#> > Incompatible?
-#> `There were 'purp/e' flowers` may have a dissimilar fuzzy match
 
 # A message will indicate when there is a large string distance between fuzzy matches
 ```

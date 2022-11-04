@@ -99,7 +99,7 @@ messy_data %>%
 #> 2 5.1.0 222   Book     Friday   APR   19.00
 ```
 
-Use fuzzy_match() to categorize and handle spelling mistakes from OCR
+Using fuzzy_match() to categorize and handle spelling mistakes from OCR
 text
 
 ``` r
@@ -159,7 +159,7 @@ row_index <-
 ```
 
 ``` r
-# Using which_rows() is a non-verbose option to filter data prior to resolving mismatched attributes
+# Using which_rows() to filter data prior to resolving mismatched attributes
 ```
 
 ``` r
@@ -173,7 +173,7 @@ mismatched[row_index, ]
 ```
 
 ``` r
-# filter would not work under these conditions and would only return 2/3 of the rows 
+# dplyr::filter is, of course, not designed to work under such conditions and would only return 2/3 of the rows 
 ```
 
 ``` r
@@ -187,23 +187,4 @@ mismatched %>% filter(type == "cases" & year == 2000)
 
 ## R Documentation
 
-##### Use ?vary to view a linked list of all functions
-
-``` r
-# Structure Data
-?which_rows()
-?fuzzy_match()
-?fuzzy_rename()
-?flatten_pages()
-?page_search()
-?drop_na_rows()
-?drop_na_cols()
-
-# Locate Files
-?get_downloads_folder()
-?get_desktop_folder()
-?files_matching()
-
-# Other (possible future relocation)
-?`%notin%`
-```
+Use ?vary in R to view a linked list of all functions

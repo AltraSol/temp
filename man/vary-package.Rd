@@ -8,7 +8,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Methods to reliably structure data when the source format or load point is expected to vary over time, or when inputs lack structure completely and are not immediately compatible with typical data manipulation packages (ex. OCR output, user-edited Excel sheets). Streamlines a few string methods to make field verification with pattern recognition easier.
+Methods to automate the loading of semi-structured data (ex. user modified files, OCR output) which are reliable enough to form a process around, but vary too much to immediately work with using typical data manipulation packages.
 }
 \seealso{
 Structure Data

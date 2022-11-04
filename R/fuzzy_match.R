@@ -106,8 +106,8 @@ fuzzy_match <- function(swap_out, swap_in) {
 
     # compute distances between all terms in both lists
     out_mat <- afind(proc_swap_out, proc_swap_in,
-      method = "running_cosine",
-      q = bounded_q
+                     method = "running_cosine",
+                     q = bounded_q
     )
 
     # find the minimum distance of any two terms
@@ -115,8 +115,9 @@ fuzzy_match <- function(swap_out, swap_in) {
     # find the matrix indices for any minimum distance match
     min_dist_indices <- which(out_mat$distance == min_dist)
 
-    if (length(min_dist_indices) == 1) {
-      most_distinct_index <- min_dist_indices
+    # if there is a single min_dist index or all matches are completely incompatible
+    if (length(min_dist_indices) == 1 | length(min_dist_indices) == length(out_mat$distance)) {
+      most_distinct_index <- min_dist_indices[1]
     } else {
       # if more than one index, find the column indices of the swap in terms
       min_dist_cols <- ceiling(min_dist_indices / length(proc_swap_out))
@@ -141,8 +142,8 @@ fuzzy_match <- function(swap_out, swap_in) {
 
     if (length(loc_push_new) == 0) {
       loc_push_new <- grep(stringi::stri_replace_rstr(swap_out[swap_out_index]),
-        origin_list,
-        fixed = TRUE
+                           origin_list,
+                           fixed = TRUE
       )
     }
 
@@ -174,7 +175,7 @@ fuzzy_match <- function(swap_out, swap_in) {
   if (length(dissimilar_matches) != 0) {
     writeLines("> Incompatible?")
     message(paste0(gsub("\\\n", "\\\\n", unlist(dissimilar_matches)),
-      collapse = "\n"
+                   collapse = "\n"
     ))
   }
 

@@ -35,21 +35,25 @@
 #' # load the 2nd txt file and use the `read_csv` function instead of the default txt reader `readLines`
 #' data <- read_url_zip(url, file_type = "txt", file_index = 2, reader = "read_csv")
 #' }
-read_url_zip <- function(url, file_type = "csv", file_name = "", file_index = 1, reader = NULL) {
+read_url_zip <- function(url, file_type = "csv", file_name = "", file_index = 1, reader = NULL, check_name_for_type = TRUE) {
 
+  # ensure url is a .zip url
   if (grepl(".zip", url, fixed = TRUE) == FALSE) {
     stop('\nurl = "', url, '" does not link to a zip file', call. = FALSE)
   }
 
-  if (grepl(".", file_name, fixed = T)) {
-    file_type <- strsplit(file_name, ".", fixed = T)[[1]][2]
-    file_name <- strsplit(file_name, ".", fixed = T)[[1]][1]
+  # if the last 5 characters of file_name include "." parse out file type
+  ending_chars <- substr(file_name, nchar(file_name) - 4, nchar(file_name))
+  if (grepl(".", ending_chars, fixed = T) & check_name_for_type = TRUE) {
+    file_type <- strsplit(ending_chars, ".", fixed = T)[[1]][2]
+    file_name <- gsub(paste0(".", file_type), "", file_name)
   }
 
   if (length(file_type) > 1) {
     stop("`file_type` must be specified or included in `file_name`", call. = FALSE)
   }
 
+  # determine reader if not specified
   if (is.null(reader) == TRUE) {
     if (file_type %in% c("csv", "tsv")) {
       reader <- "read_csv"
@@ -62,6 +66,7 @@ read_url_zip <- function(url, file_type = "csv", file_name = "", file_index = 1,
     }
   }
 
+  # if reader could not be automatically determined, stop and request reader
   if (is.null(reader) == TRUE) {
   recognized_types <- c("csv", "tsv", "xlsx", "xls", "pdf", "txt")
     stop(

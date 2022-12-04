@@ -1,12 +1,12 @@
 Package: vary
 Type: Package
 Title: Manage Unstructured Data
-Version: 0.1.0
+Version: 0.2.1
 Authors@R: 
     c(person(given = "Chris",
              family = "Ulch",
              role = c("aut", "cre"),
-             email = "culch@ualberta.ca"))
+             email = "ulchchrisj@gmail.com"))
 Description: Methods to automate the loading of semi-structured data 
   (ex. user modified files, OCR output) which are reliable enough to form a process around, 
   but vary too much to immediately work with using typical data manipulation packages.

@@ -17,31 +17,31 @@ read_url_zip(
 
 \item{file_type}{A character vector indicating a file extension.}
 
-\item{file_name}{An optional string to specify which file to read by name.}
+\item{file_name}{An optional string to specify which file to load using the file name.}
 
-\item{file_index}{An optional index number to specify which of the files to read when \code{file_name} isn't specified.}
+\item{file_index}{An optional index number to specify which file to load when \code{file_name} isn't specified.}
 
-\item{reader}{A function specified by a string that is called to load the file into R.}
+\item{reader}{A string indicating which function to use when reading the file into R.}
 }
 \value{
 A tibble when the file type is a csv, tsv, xlsx, or xls, and a character vector when the file type is pdf or txt.
 }
 \description{
-Downloads the zip folder from the provided url, unzips it to a temporary
+Downloads the zip folder pointed to by the url, unzips it to a temporary
 location, reads the first csv into R as a tibble, then deletes the downloaded
 zip folder and the temporary files.
 }
 \details{
-The file to read from within the folder can be altered with \code{file_type},
-\code{file_name}, and \code{file_index}. If the file to read is not a "csv", "tsv",
-"xlsx", "xls", "pdf", or "txt" file type, a function to read the file with
-must be specified by \code{reader}.
+\code{file_type}, \code{file_name}, and \code{file_index} can be changed from the defaults
+to read a file that is not the first csv. If the file specified is not a "csv",
+"tsv", "xlsx", "xls", "pdf", or "txt", a function to read the file with
+must be specified using the \code{reader} parameter.
 }
 \examples{
 \dontrun{
-url <- "url.zip"
+url <- "https://your.url.zip"
 
-# load the first csv
+# load the first csv within the zipped file
 data <- read_url_zip(url)
 
 # load the xlsx file "data 2020.xlsx"
@@ -49,6 +49,5 @@ data <- read_url_zip(url, file_type = "xlsx", file_name = "data 2020")
 
 # load the 2nd txt file and use the `read_csv` function instead of the default txt reader `readLines`
 data <- read_url_zip(url, file_type = "txt", file_index = 2, reader = "read_csv")
-
 }
 }

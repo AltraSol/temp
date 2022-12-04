@@ -1,6 +1,6 @@
 #' Load data from online zipped folders
 #'
-#' Downloads the zip folder pointed to by the url, unzips it to a temporary
+#' Downloads the zip folder pointed to by `url`, unzips it to a temporary
 #' location, reads the first csv into R as a tibble, then deletes the downloaded
 #' zip folder and the temporary files.
 #'
@@ -9,7 +9,7 @@
 #' "tsv", "xlsx", "xls", "pdf", or "txt", a function to read the file with
 #' must be specified using the `reader` parameter.
 #'
-#' @param url The download link to a zipped folder online.
+#' @param url The download link to a zipped folder online (ending with .zip).
 #' @param file_type A character vector indicating a file extension.
 #' @param file_name An optional string to specify which file to load using the file name.
 #' @param file_index An optional index number to specify which file to load when `file_name` isn't specified.
@@ -29,6 +29,9 @@
 #' # load the xlsx file "data 2020.xlsx"
 #' data <- read_url_zip(url, file_type = "xlsx", file_name = "data 2020")
 #'
+#' # load the tsv file "data.tsv"
+#' data <- read_url_zip(url, file_name = "data.tsv")
+#'
 #' # load the 2nd txt file and use the `read_csv` function instead of the default txt reader `readLines`
 #' data <- read_url_zip(url, file_type = "txt", file_index = 2, reader = "read_csv")
 #' }
@@ -39,8 +42,8 @@ read_url_zip <- function(url, file_type = "csv", file_name = "", file_index = 1,
   }
 
   if (grepl(".", file_name, fixed = T)) {
-    file_name <- strsplit(file_name, ".", fixed = T)[[1]][1]
     file_type <- strsplit(file_name, ".", fixed = T)[[1]][2]
+    file_name <- strsplit(file_name, ".", fixed = T)[[1]][1]
   }
 
   if (length(file_type) > 1) {

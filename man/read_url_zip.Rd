@@ -23,6 +23,10 @@ read_url_zip(
 \item{file_index}{An optional index number to specify which file to load when \code{file_name} isn't specified.}
 
 \item{reader}{A string indicating which function to use when reading the file into R.}
+
+\item{check_name_for_type}{Boolean option to prevent detecting \code{file_type} from
+the last 5 characters of \code{file_name}. Use if the last few characters of \code{file_name} contain a period
+and you have not specified the file extension.}
 }
 \value{
 A tibble when the file type is a csv, tsv, xlsx, or xls, and a character vector when the file type is pdf or txt.

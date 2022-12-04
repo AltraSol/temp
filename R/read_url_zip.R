@@ -14,6 +14,9 @@
 #' @param file_name An optional string to specify which file to load using the file name.
 #' @param file_index An optional index number to specify which file to load when `file_name` isn't specified.
 #' @param reader A string indicating which function to use when reading the file into R.
+#' @param check_name_for_type Boolean option to prevent detecting `file_type` from
+#' the last 5 characters of `file_name`. Use if the last few characters of `file_name` contain a period
+#' and you have not specified the file extension.
 #' @return A tibble when the file type is a csv, tsv, xlsx, or xls, and a character vector when the file type is pdf or txt.
 #' @importFrom readr read_csv
 #' @importFrom readxl read_excel
@@ -35,7 +38,14 @@
 #' # load the 2nd txt file and use the `read_csv` function instead of the default txt reader `readLines`
 #' data <- read_url_zip(url, file_type = "txt", file_index = 2, reader = "read_csv")
 #' }
-read_url_zip <- function(url, file_type = "csv", file_name = "", file_index = 1, reader = NULL, check_name_for_type = TRUE) {
+read_url_zip <- function(
+    url,
+    file_type = "csv",
+    file_name = "",
+    file_index = 1,
+    reader = NULL,
+    check_name_for_type = TRUE
+  ) {
 
   # ensure url is a .zip url
   if (grepl(".zip", url, fixed = TRUE) == FALSE) {
@@ -68,9 +78,9 @@ read_url_zip <- function(url, file_type = "csv", file_name = "", file_index = 1,
 
   # if reader could not be automatically determined, stop and request reader
   if (is.null(reader) == TRUE) {
-  recognized_types <- c("csv", "tsv", "xlsx", "xls", "pdf", "txt")
+    recognized_types <- c("csv", "tsv", "xlsx", "xls", "pdf", "txt")
     stop(
-      'the function name to read the file with must be specified ',
+      "the function name to read the file with must be specified ",
       'with `reader` when the file type is not one of the following types: "',
       paste0(recognized_types, collapse = '", "'),
       '"',
@@ -84,19 +94,20 @@ read_url_zip <- function(url, file_type = "csv", file_name = "", file_index = 1,
 
   dir.create(unzip_dir)
   download.file(url, temp_file, quiet = TRUE)
-  unzip(temp_file, exdir=unzip_dir, overwrite=TRUE)
+  unzip(temp_file, exdir = unzip_dir, overwrite = TRUE)
 
   regex_file_type <- paste0(".", gsub(".", "", file_type, fixed = T), "$")
-  regex_pattern <- paste0(ifelse(
-    file_name == "", "",
-    paste0("^", gsub("([.|()\\^{}+$*?]|\\[|\\])", "\\\\\\1", file_name))),
+  regex_pattern <- paste0(
+    ifelse(
+      file_name == "", "",
+      paste0("^", gsub("([.|()\\^{}+$*?]|\\[|\\])", "\\\\\\1", file_name))
+    ),
     regex_file_type
   )
 
   matching_files <- list.files(unzip_dir, pattern = regex_pattern, )
 
   if (length(matching_files) == 0) {
-
     available_files <- paste0(list.files(unzip_dir), collapse = '", \n"')
 
     unlink(temp_file, recursive = TRUE)
@@ -118,5 +129,4 @@ read_url_zip <- function(url, file_type = "csv", file_name = "", file_index = 1,
   unlink(unzip_dir, recursive = TRUE)
 
   return(data)
-
 }

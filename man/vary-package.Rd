@@ -41,7 +41,7 @@ Structure Data
 \item \code{\link[=drop_na_cols]{drop_na_cols()}}
 }
 
-Locate Files
+Locate Files / Load Data
 
 \itemize{
 \item \code{\link[=get_downloads_folder]{get_downloads_folder()}}
@@ -53,6 +53,10 @@ Locate Files
 
 \itemize{
 \item \code{\link[=files_matching]{files_matching()}}
+}
+
+\itemize{
+\item \code{\link[=read_url_zip]{read_url_zip()}}
 }
 
 Other \emph{(possible future relocation)}

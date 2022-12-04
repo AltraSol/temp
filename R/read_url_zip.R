@@ -44,7 +44,7 @@ read_url_zip <- function(url, file_type = "csv", file_name = "", file_index = 1,
 
   # if the last 5 characters of file_name include "." parse out file type
   ending_chars <- substr(file_name, nchar(file_name) - 4, nchar(file_name))
-  if (grepl(".", ending_chars, fixed = T) & check_name_for_type = TRUE) {
+  if (grepl(".", ending_chars, fixed = T) & check_name_for_type == TRUE) {
     file_type <- strsplit(ending_chars, ".", fixed = T)[[1]][2]
     file_name <- gsub(paste0(".", file_type), "", file_name)
   }

@@ -9,7 +9,8 @@ read_url_zip(
   file_type = "csv",
   file_name = "",
   file_index = 1,
-  reader = NULL
+  reader = NULL,
+  check_name_for_type = TRUE
 )
 }
 \arguments{

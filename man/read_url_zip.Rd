@@ -13,7 +13,7 @@ read_url_zip(
 )
 }
 \arguments{
-\item{url}{The download link to a zipped folder online.}
+\item{url}{The download link to a zipped folder online (ending with .zip).}
 
 \item{file_type}{A character vector indicating a file extension.}
 
@@ -27,7 +27,7 @@ read_url_zip(
 A tibble when the file type is a csv, tsv, xlsx, or xls, and a character vector when the file type is pdf or txt.
 }
 \description{
-Downloads the zip folder pointed to by the url, unzips it to a temporary
+Downloads the zip folder pointed to by \code{url}, unzips it to a temporary
 location, reads the first csv into R as a tibble, then deletes the downloaded
 zip folder and the temporary files.
 }
@@ -46,6 +46,9 @@ data <- read_url_zip(url)
 
 # load the xlsx file "data 2020.xlsx"
 data <- read_url_zip(url, file_type = "xlsx", file_name = "data 2020")
+
+# load the tsv file "data.tsv"
+data <- read_url_zip(url, file_name = "data.tsv")
 
 # load the 2nd txt file and use the `read_csv` function instead of the default txt reader `readLines`
 data <- read_url_zip(url, file_type = "txt", file_index = 2, reader = "read_csv")

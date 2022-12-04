@@ -66,7 +66,7 @@ Other \emph{(possible future relocation)}
 }
 }
 \author{
-\strong{Maintainer}: Chris Ulch \email{culch@ualberta.ca}
+\strong{Maintainer}: Chris Ulch \email{ulchchrisj@gmail.com}
 
 }
 \keyword{internal}

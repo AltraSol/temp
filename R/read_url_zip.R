@@ -104,7 +104,7 @@ read_url_zip <- function(url, file_type = "csv", file_name = "", file_index = 1,
 
     stop(
       'There are no files matching "',
-      file_name,
+      paste0(file_name, ".", file_type),
       '"\nThe files available are: \n"',
       available_files,
       '"',

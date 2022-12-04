@@ -86,23 +86,18 @@ read_url_zip <- function(url, file_type = "csv", file_name = "", file_index = 1,
   download.file(url, temp_file, quiet = TRUE)
   unzip(temp_file, exdir=unzip_dir, overwrite=TRUE)
 
-  print(file_name)
   regex_file_type <- paste0(".", gsub(".", "", file_type, fixed = T), "$")
-  # regex_pattern <- paste0(ifelse(file_name == "", "", paste0("^", file_name)), regex_file_type)
   regex_pattern <- paste0(ifelse(
     file_name == "", "",
     paste0("^", gsub("([.|()\\^{}+$*?]|\\[|\\])", "\\\\\\1", file_name))),
     regex_file_type
   )
-  print(regex_pattern)
-
-
 
   matching_files <- list.files(unzip_dir, pattern = regex_pattern, )
 
   if (length(matching_files) == 0) {
 
-    available_files <- paste0(list.files(unzip_dir), collapse = '", "')
+    available_files <- paste0(list.files(unzip_dir), collapse = '", \n"')
 
     unlink(temp_file, recursive = TRUE)
     unlink(unzip_dir, recursive = TRUE)
@@ -110,7 +105,7 @@ read_url_zip <- function(url, file_type = "csv", file_name = "", file_index = 1,
     stop(
       'There are no files matching "',
       gsub("^", "", gsub("$", "", regex_pattern, fixed = T), fixed = T),
-      '"\nThe files available are: "',
+      '"\nThe files available are: \n"',
       available_files,
       '"',
       call. = FALSE
